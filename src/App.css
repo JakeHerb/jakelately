@@ -1,6 +1,8 @@
 .main-app {
     text-align: center;
     margin: 100px;
+    height: 100vh;
+    width: 100vw;
 }
 
 .cta-button {
