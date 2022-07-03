@@ -20,3 +20,10 @@
 .mint-nft-button {
     background: orange;
 }
+
+shadow{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3vw;
+    color: #fff4a1;
+    text-shadow: 0px -.1vw #6f461c, .1vw -.1vw #6f461c, -.1vw -.2vw #6f461c, 0 -1px 0 #6f461c, 0 1px 0 #6f461c, 0 2px 0 #6f461c, 0 3px 0 #6f461c, 0 4px 0 #6f461c, 0 5px 0 #6f461c, 0 6px 0 #6f461c, 0 7px 0 #6f461c, 0 8px 0 #6f461c, 0 9px 0 #6f461c, 0 10px 0 #6f461c, 0 11px 0 #6f461c, 0 12px 0 #de6b10, 0 13px 0 #de6b10, 0 14px 0 #de6b10, 0 15px 0 #de6b10, 0 22px 30px rgba(0,0,0,0.9);;  
+}
