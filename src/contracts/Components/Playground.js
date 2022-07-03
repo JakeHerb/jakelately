@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './Playground.css';
+import Astronaut from './Astronaut';
 
 function Playground() {
 
@@ -10,11 +11,14 @@ function Playground() {
   }, [])
 
   return (
-    <div className="container">
-        <div className="child"></div>
-        <div className="child"></div>
-        <div className="child"></div>
-        <div className="child"></div>
+    <div>
+        <div className="container">
+            <div className="child"></div>
+            <div className="child"></div>
+            <div className="child"></div>
+            <div className="child"></div>
+        </div>
+        <Astronaut />
     </div>
   )
 }
