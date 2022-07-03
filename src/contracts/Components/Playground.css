@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child {
+    background-color: rgb(255, 9, 169);
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+
+.container {
+    animation: perspectiveAnimation 2s infinite ease-in-out;
+}
+
+@keyframes perspectiveAnimation {
+    0% {
+        perspective: 42px;
+    }
+    50% {
+        perspective: 90px;
+    }
+    100% {
+        perspective: 42px;
+    }
+}
+
+.child {
+    transform: rotateY(9deg);
+}
+
+.container {
+    perspective-origin: 27% 100%;
+}

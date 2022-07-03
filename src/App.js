@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import contract from './contracts/NFTCollectible.json';
 import { ethers } from 'ethers'; 
+import Playground from './contracts/Components/Playground';
 
 const contractAddress = "0x355638a4eCcb777794257f22f50c289d4189F245";
 const abi = contract.abi;
@@ -101,6 +102,7 @@ function App() {
 
   return (
     <div className='main-app'>
+    <Playground />
       <h1>Jake's "Special Sauce" NFTs</h1>
       <div>
         { currentAccount ? mintNFTButton() : connectWalletButton()}
