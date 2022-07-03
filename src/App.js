@@ -7,8 +7,13 @@ const contractAddress = "0x355638a4eCcb777794257f22f50c289d4189F245";
 const abi = contract.abi;
 
 function App() {
-
-    const [currentAccount, setCurrentAccount] = useState(null);
+  
+  //
+  //
+  // NFT STUFF BEGIN
+  //
+  //
+  const [currentAccount, setCurrentAccount] = useState(null);
 
   const checkWalletIsConnected = async () => { 
     const { ethereum } = window;
@@ -83,7 +88,7 @@ function App() {
   const mintNFTButton = () => {
     return (
       <button onClick={mintNFTHandler} className='cta-button mint-nft-button'>
-        Mint NFT
+        Gimme some of that minty fresh Jakesauce, bitch.
       </button>
     )
   }
@@ -92,9 +97,11 @@ function App() {
     checkWalletIsConnected();
   }, [])
 
+  // NFT STUFF ENDS
+
   return (
     <div className='main-app'>
-      <h1>Scrappy Squirrels Tutorial</h1>
+      <h1>Jake's "Special Sauce" NFTs</h1>
       <div>
         { currentAccount ? mintNFTButton() : connectWalletButton()}
       </div>
