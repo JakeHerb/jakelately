@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import contract from './contracts/NFTCollectible.json';
+import { ethers } from 'ethers'; 
 
 const contractAddress = "0x355638a4eCcb777794257f22f50c289d4189F245";
 const abi = contract.abi;
@@ -9,13 +10,23 @@ function App() {
 
     const [currentAccount, setCurrentAccount] = useState(null);
 
-  const checkWalletIsConnected = () => { 
+  const checkWalletIsConnected = async () => { 
     const { ethereum } = window;
 
     if (!ethereum) {
         console.log("Ensure you have Metamask installed in your browser.");
     } else {
         console.log("Wallet detected: Metamask connection available.");
+    }
+
+    const ethAccounts = await ethereum.request({ method: 'eth_accounts' });
+
+    if (ethAccounts.length !== 0) {
+        const account = ethAccounts[0];
+        console.log("Detected authorized account: ", account);
+        setCurrentAccount(account);
+    } else {
+        console.log("No authorized account detected.");
     }
   }
 
@@ -35,7 +46,17 @@ function App() {
     }
   }
 
-  const mintNftHandler = () => { }
+  const mintNFTHandler = async () => {
+    // try {
+    //     const { ethereum } = window;
+
+    //     if (ethereum) {
+    //         const provider = new ethers.pr
+    //     }
+    // } catch (error) {
+    //     console.log(error);
+    // }
+  }
 
   const connectWalletButton = () => {
     return (
@@ -45,9 +66,9 @@ function App() {
     )
   }
 
-  const mintNftButton = () => {
+  const mintNFTButton = () => {
     return (
-      <button onClick={mintNftHandler} className='cta-button mint-nft-button'>
+      <button onClick={mintNFTHandler} className='cta-button mint-nft-button'>
         Mint NFT
       </button>
     )
@@ -61,7 +82,7 @@ function App() {
     <div className='main-app'>
       <h1>Scrappy Squirrels Tutorial</h1>
       <div>
-        {connectWalletButton()}
+        { currentAccount ? mintNFTButton() : connectWalletButton()}
       </div>
     </div>
   )
