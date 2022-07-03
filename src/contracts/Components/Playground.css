@@ -8,9 +8,9 @@
 
 .child {
     background-color: rgb(255, 9, 169);
-    width: 100px;
-    height: 100px;
-    margin: 10px;
+    width: 10vmin;
+    height: 10vmin;
+    margin: 1vmin;
 }
 
 .container {
