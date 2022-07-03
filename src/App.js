@@ -47,15 +47,29 @@ function App() {
   }
 
   const mintNFTHandler = async () => {
-    // try {
-    //     const { ethereum } = window;
+    try {
+        const { ethereum } = window;
 
-    //     if (ethereum) {
-    //         const provider = new ethers.pr
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    // }
+        if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            const nftContract = new ethers.Contract(contractAddress, abi, signer);
+
+            console.log("Payment process initiating");
+            let nftTxn = await nftContract.mintNFTs(1, { value: ethers.utils.parseEther("0.01") });
+
+            console.log("Mining started.");
+            console.log("Waiting for mining to complete...");
+            await nftTxn.wait();
+
+            console.log('Mine complete. Transaction available at: https://rinkeby.etherscan.io/tx/${nftTxn.hash}');
+
+        } else {
+            console.log("Ethereum object does not exist.");
+        }
+    } catch (error) {
+        console.log(error);
+    }
   }
 
   const connectWalletButton = () => {
