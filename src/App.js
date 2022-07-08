@@ -68,7 +68,7 @@ function App() {
             console.log("Waiting for mining to complete...");
             await nftTxn.wait();
 
-            console.log('Mine complete. Transaction available at: https://rinkeby.etherscan.io/tx/${nftTxn.hash}');
+            console.log('Mine complete. Transaction available at: https://rinkeby.etherscan.io/tx/' + nftTxn.hash);
 
         } else {
             console.log("Ethereum object does not exist.");
