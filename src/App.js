@@ -4,7 +4,7 @@ import contract from './contracts/NFTCollectible.json';
 import { ethers } from 'ethers'; 
 import Playground from './contracts/Components/Playground';
 
-const contractAddress = "0x355638a4eCcb777794257f22f50c289d4189F245";
+const contractAddress = "0xabb1426EB17DD92930c408D11B59bCb72dfFaB29";
 const abi = contract.abi;
 
 function App() {
