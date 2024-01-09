@@ -1,0 +1,64 @@
+.split-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    overflow: hidden; /* For animation containment */
+  }
+  
+  .left-content, .right-content {
+    flex: 1;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect */
+  .left-content:hover, .right-content:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+  }
+  
+  /* Animation on entering viewport - you can use libraries like AOS (Animate On Scroll) */
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .left-content {
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .right-content {
+    animation: 1s ease-out 0s 1 slideInFromRight;
+  }
+  
+  .right-content img {
+    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+    height: auto; /* Maintains the aspect ratio of the image */
+    border-radius: 5px; /* Optional: Rounds the corners of the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for any transformations */
+  }
+  
+  .right-content:hover img {
+    transform: scale(1.02); /* Slightly enlarges the image on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .split-section {
+      flex-direction: column;
+    }
+  }

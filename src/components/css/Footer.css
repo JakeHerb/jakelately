@@ -1,0 +1,41 @@
+.footer {
+  background-color: #191970; /* Deep blue */
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-links li {
+  margin: 0 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #FF1493; /* Intense pink */
+}
+
+/* .social-media { */
+  /* Style for social media icons */
+/* } */
+
+.about-text {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
