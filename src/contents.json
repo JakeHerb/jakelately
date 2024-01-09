@@ -1,7 +1,7 @@
 {
   "homePage": {
     "header": {
-      "logoText": "Dan's Got the CAKE! ya' BITCH",
+      "logoText": "Jake Lately",
       "navigation": [
         { "name": "Home", "link": "/" },
         { "name": "About", "link": "/about" },
@@ -12,8 +12,8 @@
     },
     "heroSection": {
       "imageSrc": "https://media.licdn.com/dms/image/D5603AQEQ7HYqf3Wd3w/profile-displayphoto-shrink_800_800/0/1699404702054?e=2147483647&v=beta&t=ToaJSX_iv2_OYNRh3STOB1VZ7_3z42cMA1NXPtUhuF0",
-      "title": "A fine ass, for a fine man",
-      "text": "Explore the world of Dan's ass, the one that's got everyone saying 'yummy, yummy - gotta get more Dan's ass in my tummy' - Teen Vogue"
+      "title": "Loving Life Lately",
+      "text": "It makes no sense that a college dropout from Spokane, Washington could end up as a Senior Software Engineer for Meta working in Generative Ai. It makes even less sense for that person to do creative consultation for some of the biggest names in entertainment. And yet - here I am enjoying the ride, taking it one day at a time."
     }
   },
   "playgroundPage": {

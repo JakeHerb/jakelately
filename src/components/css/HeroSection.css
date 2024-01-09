@@ -6,7 +6,6 @@
     padding: 2em;
     background-size: cover;
     position: relative; /* Needed for correct positioning of children */
-    z-index: -1;
   }
   
   .hero-content {
