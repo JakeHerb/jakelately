@@ -60,7 +60,7 @@ const InteractiveCanvas = () => {
     }
 
     let circles = [];
-    for (let i = 0; i < 2000; i++) {
+    for (let i = 0; i < 500; i++) {
       let radius = Math.random() * 5 + 1;
       let x = Math.random() * (window.innerWidth - radius * 2) + radius;
       let y = Math.random() * (window.innerHeight - radius * 2) + radius;

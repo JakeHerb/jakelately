@@ -4,4 +4,7 @@
     height: 100%; /* Adjust height as needed */
     display: block;
     margin: 0 auto;
+    background-color: black;
+    opacity: 50%;
+    z-index: -1;
   }
