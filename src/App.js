@@ -8,10 +8,16 @@ import Playground from './components/Playground.react'; // Import your Playgroun
 import SplitSection from './components/sections/SplitSection.react';
 import InteractiveCanvas from './components/InteractiveCanvas.react';
 import EPKSection from './components/sections/EPKSection.react';
+import ShaderComponent from './components/ShaderComponent.react';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
   const { homePage } = contentData;
+
+  // For Energy Beam
+  const [startPos, setStartPos] = useState({ x: 100, y: 100 }); // Example positions
+  const [endPos, setEndPos] = useState({ x: 300, y: 300 });
 
   return (
     <Router>
@@ -36,6 +42,9 @@ function App() {
           <Route path="/playground" element={<Playground />} />
           <Route path='/about' element={
             <EPKSection />
+          } />
+          <Route path='/services' element={
+            <ShaderComponent />
           } />
           {/* Add more Routes for other pages as needed */}
         </Routes>
