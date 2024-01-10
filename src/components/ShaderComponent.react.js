@@ -248,7 +248,7 @@ const ShaderComponent = () => {
         // Normalize pixel coordinates
         vec2 uv = fragCoord / u_resolution;
 
-        vec2 p=(1.2*fragCoord.xy-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
+        vec2 p=(2.0*fragCoord.xy-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
 
         p*=2.0;
 
@@ -261,7 +261,7 @@ const ShaderComponent = () => {
             p=newp;
         }
 
-        gl_FragColor=vec4(spectral_colour(p.y*50.0+500.0+sin(u_time*0.6)),1.0);
+        gl_FragColor=vec4(spectral_colour(p.y*50.0+500.0+sin((u_time * 0.1)*0.6)),1.0);
     }
     `;
 
