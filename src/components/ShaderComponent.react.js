@@ -86,119 +86,185 @@ const ShaderComponent = () => {
     // }
     // `;
 
-    // Rainbow things
-    const fsSource = `
-        precision mediump float;
-        uniform vec2 u_resolution; // Equivalent to iResolution
-        uniform float u_time; // Equivalent to iTime
+    // // Rainbow things
+    // const fsSource = `
+    //     precision mediump float;
+    //     uniform vec2 u_resolution; // Equivalent to iResolution
+    //     uniform float u_time; // Equivalent to iTime
         
-        #define EPS vec2(1e-4, 0.0)
+    //     #define EPS vec2(1e-4, 0.0)
 
-        float time;
+    //     float time;
 
-        vec3 rotateX(float a, vec3 v)
-        {
-            return vec3(v.x, cos(a) * v.y + sin(a) * v.z, cos(a) * v.z - sin(a) * v.y);
-        }
+    //     vec3 rotateX(float a, vec3 v)
+    //     {
+    //         return vec3(v.x, cos(a) * v.y + sin(a) * v.z, cos(a) * v.z - sin(a) * v.y);
+    //     }
 
-        vec3 rotateY(float a, vec3 v)
-        {
-            return vec3(cos(a) * v.x + sin(a) * v.z, v.y, cos(a) * v.z - sin(a) * v.x);
-        }
+    //     vec3 rotateY(float a, vec3 v)
+    //     {
+    //         return vec3(cos(a) * v.x + sin(a) * v.z, v.y, cos(a) * v.z - sin(a) * v.x);
+    //     }
 
-        float sphere(vec3 p, float r)
-        {
-            return length(p) - r;
-        }
+    //     float sphere(vec3 p, float r)
+    //     {
+    //         return length(p) - r;
+    //     }
 
-        float plane(vec3 p, vec4 n)
-        {
-            return dot(p, n.xyz) - n.w;
-        }
+    //     float plane(vec3 p, vec4 n)
+    //     {
+    //         return dot(p, n.xyz) - n.w;
+    //     }
 
-        float sceneDist(vec3 p)
-        {
-            const int num_spheres = 32;
+    //     float sceneDist(vec3 p)
+    //     {
+    //         const int num_spheres = 32;
 
-            float sd = 1e3;
-
-
-            for(int i = 0; i < num_spheres; ++i)
-            {
-            float r = 0.22 * sqrt(float(i));
-            vec3 p2 = rotateX(cos(time + float(i) * 0.2) * 0.15, p);
-            float cd = -sphere(p2 + vec3(0.0, -0.9, 0.0), 1.3);
-            sd = min(sd, max(abs(sphere(p2, r)), cd) - 1e-3);
-            }
-
-            return sd;
-        }
-
-        vec3 sceneNorm(vec3 p)
-        {
-            float d = sceneDist(p);
-            return normalize(vec3(sceneDist(p + EPS.xyy) - d, sceneDist(p + EPS.yxy) - d,
-                                    sceneDist(p + EPS.yyx) - d));
-        }
-
-        vec3 col(vec3 p)
-        {
-            float a = length(p) * 20.0;
-            return vec3(0.5) + 0.5 * cos(vec3(a, a * 1.1, a * 1.2));
-        }
+    //         float sd = 1e3;
 
 
-        // ambient occlusion approximation (thanks to simesgreen)
-        float ambientOcclusion(vec3 p, vec3 n)
-        {
-            const int steps = 4;
-            const float delta = 0.5;
+    //         for(int i = 0; i < num_spheres; ++i)
+    //         {
+    //         float r = 0.22 * sqrt(float(i));
+    //         vec3 p2 = rotateX(cos(time + float(i) * 0.2) * 0.15, p);
+    //         float cd = -sphere(p2 + vec3(0.0, -0.9, 0.0), 1.3);
+    //         sd = min(sd, max(abs(sphere(p2, r)), cd) - 1e-3);
+    //         }
 
-            float a = 0.0;
-            float weight = 3.0;
-            for(int i=1; i<=steps; i++) {
-                float d = (float(i) / float(steps)) * delta; 
-                a += weight*(d - sceneDist(p + n*d));
-                weight *= 0.5;
-            }
-            return clamp(1.0 - a, 0.0, 1.0);
-        }
+    //         return sd;
+    //     }
 
-        void main()
-        {
-            vec2 fragCoord = gl_FragCoord.xy;
-            vec2 uv = fragCoord.xy / u_resolution.xy;
-            vec2 t = uv * 2.0 - vec2(1.0);
-            t.x *= u_resolution.x / u_resolution.y;
+    //     vec3 sceneNorm(vec3 p)
+    //     {
+    //         float d = sceneDist(p);
+    //         return normalize(vec3(sceneDist(p + EPS.xyy) - d, sceneDist(p + EPS.yxy) - d,
+    //                                 sceneDist(p + EPS.yyx) - d));
+    //     }
+
+    //     vec3 col(vec3 p)
+    //     {
+    //         float a = length(p) * 20.0;
+    //         return vec3(0.5) + 0.5 * cos(vec3(a, a * 1.1, a * 1.2));
+    //     }
+
+
+    //     // ambient occlusion approximation (thanks to simesgreen)
+    //     float ambientOcclusion(vec3 p, vec3 n)
+    //     {
+    //         const int steps = 4;
+    //         const float delta = 0.5;
+
+    //         float a = 0.0;
+    //         float weight = 3.0;
+    //         for(int i=1; i<=steps; i++) {
+    //             float d = (float(i) / float(steps)) * delta; 
+    //             a += weight*(d - sceneDist(p + n*d));
+    //             weight *= 0.5;
+    //         }
+    //         return clamp(1.0 - a, 0.0, 1.0);
+    //     }
+
+    //     void main()
+    //     {
+    //         vec2 fragCoord = gl_FragCoord.xy;
+    //         vec2 uv = fragCoord.xy / u_resolution.xy;
+    //         vec2 t = uv * 2.0 - vec2(1.0);
+    //         t.x *= u_resolution.x / u_resolution.y;
             
-            time = u_time;
+    //         time = u_time;
             
-            vec3 ro = vec3(-0.4, sin(time * 2.0) * 0.05, 0.7), rd = rotateX(1.1, rotateY(0.5, normalize(vec3(t.xy, -0.8))));
-            float f = 0.0;
-            vec3 rp, n;
+    //         vec3 ro = vec3(-0.4, sin(time * 2.0) * 0.05, 0.7), rd = rotateX(1.1, rotateY(0.5, normalize(vec3(t.xy, -0.8))));
+    //         float f = 0.0;
+    //         vec3 rp, n;
             
-            for(int i = 0; i < 5; ++i)
-            {
-                rp = ro + rd * f;
-                float d = sceneDist(rp);
+    //         for(int i = 0; i < 5; ++i)
+    //         {
+    //             rp = ro + rd * f;
+    //             float d = sceneDist(rp);
                 
-                if(abs(d) < 1e-4)
-                    break;
+    //             if(abs(d) < 1e-4)
+    //                 break;
                 
-                f += d;
-            }
+    //             f += d;
+    //         }
             
-            n = sceneNorm(rp);
+    //         n = sceneNorm(rp);
             
-            vec3 l = normalize(vec3(1.0, 1.0, -1.0));
+    //         vec3 l = normalize(vec3(1.0, 1.0, -1.0));
             
-            float ao = ambientOcclusion(rp, n);
+    //         float ao = ambientOcclusion(rp, n);
             
-            gl_FragColor.rgb = vec3(0.5 + 0.5 * clamp(dot(n, l), 0.0, 1.0)) * col(rp) * mix(0.1, 1.0, ao) * 1.6;
-            gl_FragColor.a = 1.0;
+    //         gl_FragColor.rgb = vec3(0.5 + 0.5 * clamp(dot(n, l), 0.0, 1.0)) * col(rp) * mix(0.1, 1.0, ao) * 1.6;
+    //         gl_FragColor.a = 1.0;
+    //     }
+
+    //   `;
+
+     // const fsSource = `
+    //   precision mediump float;
+    //   uniform float u_time;
+    //   uniform vec2 u_resolution;
+
+    //   void main() {
+    //     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+
+    //     // Time varying pixel color
+    //     vec3 col = 0.5 + 0.5*cos(u_time+uv.xyx+vec3(0,2,4));                                                                                                                                                                                                                                                                                                                                                                                                                                                         // https://www.shadertoy.com/view/ddlSRn
+        
+    //     // Output to screen 
+    //     gl_FragColor = vec4(col,1.0);  
+    //   }
+    // `;
+
+    // Neon Rain lines
+    const fsSource = `
+    precision mediump float;
+
+    uniform vec2 u_resolution; // Equivalent to iResolution
+    uniform float u_time; // Equivalent to iTime
+    
+    #define FALLING_SPEED  0.01
+    #define STRIPES_FACTOR 1.0
+    
+    vec3 spectral_colour(float l) // RGB <0,1> <- lambda l <400,700> [nm]
+    {
+        float r=0.0,g=0.0,b=0.0;
+            if ((l>=400.0)&&(l<410.0)) { float t=(l-400.0)/(410.0-400.0); r=    +(0.33*t)-(0.20*t*t); }
+        else if ((l>=410.0)&&(l<475.0)) { float t=(l-410.0)/(475.0-410.0); r=0.14         -(0.13*t*t); }
+        else if ((l>=545.0)&&(l<595.0)) { float t=(l-545.0)/(595.0-545.0); r=    +(1.98*t)-(     t*t); }
+        else if ((l>=595.0)&&(l<650.0)) { float t=(l-595.0)/(650.0-595.0); r=0.98+(0.06*t)-(0.40*t*t); }
+        else if ((l>=650.0)&&(l<700.0)) { float t=(l-650.0)/(700.0-650.0); r=0.65-(0.84*t)+(0.20*t*t); }
+            if ((l>=415.0)&&(l<475.0)) { float t=(l-415.0)/(475.0-415.0); g=             +(0.80*t*t); }
+        else if ((l>=475.0)&&(l<590.0)) { float t=(l-475.0)/(590.0-475.0); g=0.8 +(0.76*t)-(0.80*t*t); }
+        else if ((l>=585.0)&&(l<639.0)) { float t=(l-585.0)/(639.0-585.0); g=0.82-(0.80*t)           ; }
+            if ((l>=400.0)&&(l<475.0)) { float t=(l-400.0)/(475.0-400.0); b=    +(2.20*t)-(1.50*t*t); }
+        else if ((l>=475.0)&&(l<560.0)) { float t=(l-475.0)/(560.0-475.0); b=0.7 -(     t)+(0.30*t*t); }
+
+        return vec3(r,g,b);
+    }
+    
+    void main() {
+        vec2 fragCoord = gl_FragCoord.xy;
+        // Normalize pixel coordinates
+        vec2 uv = fragCoord / u_resolution;
+
+        vec2 p=(1.2*fragCoord.xy-u_resolution.xy)/min(u_resolution.x,u_resolution.y);
+
+        p*=2.0;
+
+        for(int i=0;i<8;i++)
+        {
+            vec2 newp=vec2(
+                p.y+cos(p.x+u_time)-sin(p.y*cos(u_time*0.2)),
+                p.x-sin(p.y-u_time)-cos(p.x*sin(u_time*0.3))
+            );
+            p=newp;
         }
 
-      `;
+        gl_FragColor=vec4(spectral_colour(p.y*50.0+500.0+sin(u_time*0.6)),1.0);
+    }
+    `;
+
 
     // Compile shaders
     const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
