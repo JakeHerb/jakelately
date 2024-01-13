@@ -1,0 +1,16 @@
+
+
+
+.teamPage ul {
+    grid-gap: 10px;
+    grid-template-columns: minmax(200px, 1fr) 200px 200px;
+    height: 200px;
+    justify-content: center;
+}
+.teamPage li { 
+    display: inline-block;
+    border-radius: 5px;
+    padding: 20px;
+    height: 200px;
+    width: 200px;
+} 

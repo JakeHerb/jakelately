@@ -9,6 +9,7 @@ import SplitSection from './components/sections/SplitSection.react';
 import InteractiveCanvas from './components/InteractiveCanvas.react';
 import EPKSection from './components/sections/EPKSection.react';
 import ShaderComponent from './components/ShaderComponent.react';
+import TeamPage from './components/TeamPage.react';
 import { useState } from 'react';
 import './App.css';
 
@@ -33,7 +34,7 @@ function App() {
             aboutText={homePage.heroSection.text} 
           />
           <SplitSection 
-            leftContent={<p>Some interesting text about a topic or a feature.</p>}
+            leftContent={<TeamPage/>}
             rightContent={<img src="https://static.vecteezy.com/system/resources/previews/013/446/248/original/digital-technology-music-note-melody-song-sheet-banner-blue-pink-background-sound-sing-media-key-abstract-tech-innovation-future-orange-color-big-data-ai-network-connection-illustration-vector.jpg" alt="Descriptive Alt Text" />}
           />  
           </>
@@ -45,6 +46,9 @@ function App() {
           } />
           <Route path='/services' element={
             <ShaderComponent />
+          } />
+          <Route path='/team' element={
+            <TeamPage />
           } />
           {/* Add more Routes for other pages as needed */}
         </Routes>
