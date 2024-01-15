@@ -1,0 +1,23 @@
+.pixel-button {
+    background: linear-gradient(135deg, #0000ff 0%, #ff69b4 100%); /* Sleek gradient */
+    color: #ffffff; /* White text for better contrast */
+    border: none;
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  }
+  
+  .pixel-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pixel-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow when clicked */
+  }

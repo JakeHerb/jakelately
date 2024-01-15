@@ -1,0 +1,26 @@
+/* Basic styles for the navbar, refine these to match your design */
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1f26;
+    color: white;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-around;
+    background: #1e1f26;
+    padding: 10px;
+  }
+  
+  .nav-tab {
+    color: #03dac6;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .nav-tab:hover {
+    color: #ff0266;
+  }

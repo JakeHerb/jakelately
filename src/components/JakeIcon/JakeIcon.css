@@ -1,0 +1,17 @@
+.jake-icon {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 5px;
+    align-items: center;
+    font-family: "Press Start 2P", system-ui;
+    outline-color: #1770CE;
+    outline-style: auto;
+    outline-offset: 7px;
+  }
+  
+  .letter {
+    font-size: 1.5rem; /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center;
+    color: #FF1493
+  }

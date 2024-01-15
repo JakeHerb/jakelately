@@ -1,0 +1,57 @@
+.hero {
+    background: linear-gradient(135deg, #0000ff, #ff69b4);
+    background-size: 200% 200%; /* Enlarge the background */
+    animation: moveGradient 5s ease infinite;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .hero-title {
+    font-family: 'Audiowide', cursive;
+    font-size: 3rem; /* Large, attention-grabbing size */
+    margin-bottom: 20px;
+  }
+
+
+  .hero-subtitle {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    overflow: hidden; /* Ensures the content area size doesn't change */
+    border-right: .15em solid #ffffff; /* Simulates the typewriter cursor */
+    width: max-content; /* Restrict width to content size */
+    margin: 0 auto; /* Center the subtitle */
+    animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+    white-space: nowrap; /* Prevent subtitle from wrapping */
+    
+  }
+  
+ 
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink-caret {
+    50% { border-color: transparent; }
+  }
+  
+  /* Additional CSS to stop blinking after typing is done */
+  .blink-caret {
+    animation-delay: 3.5s; /* same duration as the typing animation */
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #ffffff; }
+  }

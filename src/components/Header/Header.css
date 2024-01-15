@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  justify-content: center; /* Center the container */
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #0000ff; /* or any other color that fits the theme */
+  color: #fff;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Set a max width */
+  padding: 1rem 2rem;
+  margin: 0 auto; /* Center the container */
+}
+
+.logo {
+  margin-right: auto; /* This will push everything else to the right */
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: 20px; /* Add some space between the button and the navigation links */
+}
+
+.nav {
+  display: none;
+}
+
+.nav.open {
+  display: block;
+  position: absolute; /* Adjust the position if needed */
+  top: 100%; /* Place it right below the header */
+  left: 0;
+  right: 0;
+  background-color: #0000ff; /* Match header background */
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nav-links li {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff; /* Adjust for better visibility */
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #0277bd; /* Material blue */
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .header-container {
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+}
