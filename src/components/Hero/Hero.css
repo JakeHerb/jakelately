@@ -29,11 +29,10 @@
     font-size: 1.5rem;
     overflow: hidden; /* Ensures the content area size doesn't change */
     border-right: .15em solid #ffffff; /* Simulates the typewriter cursor */
-    width: max-content; /* Restrict width to content size */
+    width:fit-content; /* Restrict width to content size */
     margin: 0 auto; /* Center the subtitle */
     animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
     white-space: nowrap; /* Prevent subtitle from wrapping */
-    
   }
   
  
@@ -44,11 +43,6 @@
   
   @keyframes blink-caret {
     50% { border-color: transparent; }
-  }
-  
-  /* Additional CSS to stop blinking after typing is done */
-  .blink-caret {
-    animation-delay: 3.5s; /* same duration as the typing animation */
   }
   
   @keyframes blink-caret {

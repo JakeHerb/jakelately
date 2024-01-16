@@ -27,6 +27,7 @@
   font-size: 2rem;
   cursor: pointer;
   margin-left: 20px; /* Add some space between the button and the navigation links */
+  color: #FF1493;
 }
 
 .nav {
