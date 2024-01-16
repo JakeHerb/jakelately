@@ -4,7 +4,7 @@
     animation: moveGradient 5s ease infinite;
     color: #ffffff;
     text-align: center;
-    padding: 50px 20px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,6 +33,15 @@
     margin: 0 auto; /* Center the subtitle */
     animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
     white-space: nowrap; /* Prevent subtitle from wrapping */
+  }
+
+  @media (max-width: 768px) {
+    .hero-subtitle {
+      white-space: normal; /* Allow wrapping on small screens */
+      animation: none; /* You might choose to disable the typing animation on small screens */
+      border-right: none; /* Remove the cursor simulation */
+      /* Adjust font size and other styles as needed */
+    }
   }
   
  
