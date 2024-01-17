@@ -1,31 +1,27 @@
 .hero {
-    background: linear-gradient(135deg, #0000ff, #ff69b4);
-    background-size: 200% 200%; /* Enlarge the background */
-    animation: moveGradient 5s ease infinite;
-    color: #ffffff;
+    background-color: #011329;
+    background-image: url('./LeftSpace.png'); /* Update with the correct path */
+    background-position: left center; /* Aligns the image to the left */
+    background-size: contain; /* Adjust as needed */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    color: #ffaf00;
     text-align: center;
-    padding: 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  @keyframes moveGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    margin: 0 auto; /* Center the hero section */
   }
   
   .hero-title {
-    font-family: 'Audiowide', cursive;
-    font-size: 3rem; /* Large, attention-grabbing size */
+    font-family: "Livvic SemiBold";
+    font-size: 4rem; /* Large, attention-grabbing size */
     margin-bottom: 20px;
   }
 
 
   .hero-subtitle {
-    font-family: 'VT323', monospace;
+    font-family: 'Yellowtail';
     font-size: 1.5rem;
     overflow: hidden; /* Ensures the content area size doesn't change */
     border-right: .15em solid #ffffff; /* Simulates the typewriter cursor */
@@ -33,6 +29,7 @@
     margin: 0 auto; /* Center the subtitle */
     animation: typing 3.5s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
     white-space: nowrap; /* Prevent subtitle from wrapping */
+    color: #3c7f72;
   }
 
   @media (max-width: 768px) {
@@ -56,5 +53,5 @@
   
   @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: #ffffff; }
+    50% { border-color: #ffaf00; }
   }

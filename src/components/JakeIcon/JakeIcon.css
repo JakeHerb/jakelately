@@ -4,14 +4,14 @@
     grid-gap: 5px;
     align-items: center;
     font-family: "Press Start 2P", system-ui;
-    outline-color: #1770CE;
+    outline-color: #011329;
     outline-style: auto;
     outline-offset: 7px;
   }
   
   .letter {
-    font-size: 1.5rem; /* Adjust size as needed */
+    font-size: 1.1rem; /* Adjust size as needed */
     font-weight: bold;
     text-align: center;
-    color: #FF1493
+    color: #011329
   }

@@ -3,7 +3,7 @@
   justify-content: center; /* Center the container */
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #0000ff; /* or any other color that fits the theme */
+  background-color: #ffaf00; /* or any other color that fits the theme */
   color: #fff;
 }
 
@@ -27,7 +27,7 @@
   font-size: 2rem;
   cursor: pointer;
   margin-left: 20px; /* Add some space between the button and the navigation links */
-  color: #FF1493;
+  color: #011329;
 }
 
 .nav {
@@ -40,7 +40,7 @@
   top: 100%; /* Place it right below the header */
   left: 0;
   right: 0;
-  background-color: #0000ff; /* Match header background */
+  background-color: #011329; /* Match header background */
 }
 
 .nav-links {

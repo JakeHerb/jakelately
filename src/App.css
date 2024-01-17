@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'VT323', monospace; /* default body font */
-  background-color: #1e1f26; /* example background color */
+  background-color: #011329; /* example background color */
   color: #ffffff; /* default text color */
 }
 
@@ -13,6 +13,5 @@ body {
 .main-content {
   max-width: 1200px; /* Same max-width as the header */
   margin: 0 auto; /* Center the content */
-  padding: 1rem; /* Add padding */
   /* You can also add a background color or border if you want to visually separate the content area */
 }

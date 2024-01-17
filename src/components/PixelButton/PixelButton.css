@@ -1,6 +1,6 @@
 .pixel-button {
-    background: linear-gradient(135deg, #0000ff 0%, #ff69b4 100%); /* Sleek gradient */
-    color: #ffffff; /* White text for better contrast */
+    background: #ffaf00;
+    color: #3c7f72; /* White text for better contrast */
     border: none;
     font-family: 'Press Start 2P', system-ui;
     font-size: 16px;

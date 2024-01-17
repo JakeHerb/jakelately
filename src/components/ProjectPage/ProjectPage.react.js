@@ -6,7 +6,7 @@ import './ProjectPage.css';
 function ProjectPage() {
   return (
     <div className="projects-container">
-    <Card title="AI-Driven Music Composition">
+    <Card title="Generative AI-Driven Musical Composition">
       <p>
         Explore the intersection of artificial intelligence and music production. 
         This project involves developing an AI model that composes music, utilizing 
