@@ -4,6 +4,7 @@ import Header from './components/Header/Header.react';
 import GoodAtStuff from './components/GoodAtStuff/GoodAtStuff.react';
 import ProjectPage from './components/ProjectPage/ProjectPage.react';
 import Hero from './components/Hero/Hero.react';
+import Footer from './components/Footer/Footer.react';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <ProjectPage />
         </div>
         {/* Other components */}
+        <Footer />
     </div>
 );
 }

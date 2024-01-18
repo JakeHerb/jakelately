@@ -1,0 +1,16 @@
+.footer-container {
+    width: 100%;
+    padding: 1rem 0;
+    background-color: #011329; /* Adjust the background color as needed */
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+  }
+  
+  .footer-text {
+    font-family: "Livvic", sans-serif;
+    margin: 0;
+    font-size: 1rem;
+    /* Add any additional styling you want for the footer text */
+  }

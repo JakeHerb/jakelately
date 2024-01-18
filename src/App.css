@@ -13,5 +13,6 @@ body {
 .main-content {
   max-width: 1200px; /* Same max-width as the header */
   margin: 0 auto; /* Center the content */
+  display: inline;
   /* You can also add a background color or border if you want to visually separate the content area */
 }
