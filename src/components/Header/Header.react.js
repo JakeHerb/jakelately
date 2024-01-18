@@ -13,7 +13,7 @@ function Header() {
     <header className="header">
       <div className="header-container"> {/* Add this container */}
         <div className="logo">
-          <JakeIcon />
+          <h1>Jake Lately</h1>
         </div>
         <button className="menu-button" onClick={toggleMenu}>☰</button>
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
