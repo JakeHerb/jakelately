@@ -1,0 +1,136 @@
+.section-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* This will center the child content horizontally */
+    height: 100vh;
+    text-align: center; /* Ensures text is centered */
+    max-width: 1200px;
+    margin: 0 auto; /* Centers the container in the viewport */
+
+}
+
+.circle-image {
+    position: absolute;
+    right: 75%;
+    height: 100%;
+}
+
+.image-and-text-box {
+    display: flex;
+    flex-direction: row; /* For a side-by-side layout of image and text */
+    justify-content: center;
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Adds space between image and text */
+    margin-top: 20px; /* Adds some space at the top */
+}
+
+.selfie {
+    position: absolute;
+    flex: 0 0 auto; /* Do not grow, do not shrink, be based on content */
+    object-fit: cover;
+    height: 80vh; /* Adjust this as needed to work with your image */
+    max-width: 33%;
+    left: 2.5%;
+}
+
+.text-area {
+    position: absolute;
+    flex: 1; /* Allows the text area to grow and fill the remaining space */
+    z-index: 3;  
+    font-family: "Livvic", sans-serif;
+    font-size: large;
+    color: white;
+    padding: 20px; /* Adds some padding around the text */
+    width: 55%;
+    height: auto;
+    right: 0;
+}
+
+.title-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+}
+
+.name {
+    font-size: 5rem;
+}
+
+.jake-about {
+    font-weight: 525;
+    margin-bottom: -2.2rem; 
+  }
+  
+.lately-about {
+    font-weight: 500;
+    left: 0; 
+  }
+
+  .about-subtitle {
+    position: relative;
+    color: #d34a24;
+    font-size: 2rem;
+    font-family: 'Kollektif', sans-serif;
+  }
+
+
+  .info-sections {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem; /* Space from the subtitle */
+    width: 80%;
+    transform: translateX(-5%);
+  }
+
+  .left-info, .right-info {
+    flex-basis: 48%; /* Split the space evenly between two columns */
+  }
+
+.left-info h2, .right-info h2 {
+    font-size: 1.5rem;
+    color: #f4ddb5; /* Header color */
+    margin-bottom: 1rem;
+}
+
+.left-info p, .right-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #f4ddb5; /* Header color */
+    text-align: justify; /* Justify the text for a cleaner look */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+
+    .name {
+        visibility: hidden;
+        position: absolute
+    }
+
+    .about-subtitle {
+        font-size: 2.5rem;
+    }
+
+    .section-container {
+        height: auto;
+    }
+
+    .image-and-text-box {
+        flex-direction: column; /* Stack image and text on small screens */
+    }
+
+    .selfie {
+        visibility: hidden;
+    }
+
+    .text-area {
+        width: 80%; /* Allow text area to take full width on small screens */
+        position: relative;
+    }
+
+    .info-sections {
+        display: inline;
+    }
+}
