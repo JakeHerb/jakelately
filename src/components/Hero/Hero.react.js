@@ -1,5 +1,9 @@
 import React from 'react';
 import './Hero.css';
+import leftSpaceImage from './LeftSpace.png';
+import rightSpaceImage from './rightSpace.png';
+import heroLines from './heroLines.svg';
+import astronautImage from './spaceman.png';
 
 function Hero() {
 
@@ -11,7 +15,14 @@ function Hero() {
       };
   return (
     <div className="hero" style={heroStyle}>
-      <h1 className="hero-title">Jake <span className="turqiose">Lately</span></h1>
+      <img src={leftSpaceImage} alt="Left Space" className="background-image left" />
+      <img src={rightSpaceImage} alt="Right Space" className="background-image right" />
+      <img src={heroLines} alt="Hero Lines" className="hero-lines" />
+      <img src={astronautImage} alt="Floating Astronaut" className="floating-astronaut"/>
+      <h1 className="hero-title">
+        <span className="jake">JAKE</span> 
+        <span className="lately turqiose">LATELY</span>      
+      </h1>
       <div className="horizontal-line" style={lineStyle}></div> {/* Horizontal line */}
         <div>
             <p className="hero-subtitle">How can <span className="yellow">Jake</span> help <span className="turqiose">you</span>?&nbsp;</p>

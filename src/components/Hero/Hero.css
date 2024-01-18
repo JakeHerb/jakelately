@@ -1,23 +1,95 @@
 .hero {
-    background-color: #011329;
-    background-image: url('./LeftSpace.png'), url('./rightSpace.png');
-    background-position: left center, right center;
-    background-repeat: no-repeat, no-repeat;
-    background-size: contain; /* Adjust as needed */
+    position: relative;
     color: #ffaf00;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto; /* Center the hero section */
+    margin: 0 auto;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  width: 50%; 
+  height: 100%;
+  object-fit: cover; 
+  z-index: -1;
+}
+
+.background-image.left {
+  left: 0;
+}
+
+.background-image.right {
+  right: 0;
+}
+
+
+.hero-lines {
+  position: absolute;
+  width: 10rem; 
+  left: calc(34% - 15% / 2);
+  height: auto;
+  z-index: 0;
+  rotate: -90deg;
+  margin-top: 4rem;
+  object-fit: contain;
+  transform: translateY(-22rem);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); } 
+}
+
+.floating-astronaut {
+  position: absolute; 
+  top: 40%; 
+  right: 66%; 
+  height: 15rem;
+  width: auto;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite; 
+  z-index: 0;
+}
+
+
+@media (max-width: 768px) {
+  .floating-astronaut {
+    margin-top: 13rem;
   }
-  
-  .hero-title {
-    font-family: "Livvic SemiBold";
-    font-size: 4rem; /* Large, attention-grabbing size */
-    margin-bottom: 10px;
+
+  .hero-lines {
+    visibility: hidden;
   }
+}
+
+.hero-title {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  font-family: "Livvic", sans-serif;
+  font-size: 4rem; 
+  margin-bottom: 10px;
+  z-index: 2;
+  position:relative;
+}
+
+.jake {
+  font-size: 7rem;
+  font-weight: 600;
+  margin-bottom: -2.2rem; 
+  transform: translateX(1rem); 
+}
+
+.lately {
+  font-weight: 550;
+  font-size: 4rem;
+  left: 0; 
+  transform: translateX(0rem); 
+}
 
 .turqiose {
     color: #3c7f72;
@@ -28,23 +100,34 @@
 }
 
 .horizontal-line {
-    height: 1px; /* Adjust the thickness of the line */
-    width: 30%; /* Adjust the width as needed */
-    margin: 10px 0px; /* Add some space above and below the line */
-    align-self:auto; /* Aligns the line to the left */
+    height: 1px; 
+    width: 20rem; 
+    align-self:auto; 
+    transform: translateX(3rem);
+    margin-bottom: 0.5rem;
+    z-index: 2;
+  }
+
+  @media (max-width: 768px) {
+    .horizontal-line {
+      width: 18rem;
+      transform: translateX(0.3rem);
+    }
   }
 
 
   .hero-subtitle {
     font-family: 'Yellowtail';
     font-size: 1.5rem;
-    overflow: hidden; /* Ensures the content area size doesn't change */
-    border-right: .15em solid #ffffff; /* Simulates the typewriter cursor */
-    width: auto; /* Restrict width to content size */
-    margin: 0 auto; /* Center the subtitle */
-    animation: typing 2.8s steps(21, end) forwards, blink-caret 1.0s step-end infinite;
-    white-space: nowrap; /* Prevent subtitle from wrapping */
+    overflow: hidden; 
+    border-right: .15em solid #ffffff; 
+    width: auto; 
+    margin: 0 auto; 
+    animation: typing 2.8s steps(21, end) forwards, blink-caret 1.5s step-end infinite;
+    white-space: nowrap; 
     color: #f4ddb5;
+    z-index: 2;
+    transform: translateX(0rem);
   }
 
 
@@ -61,5 +144,8 @@
   
   @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: #ffaf00; }
+    50% { 
+      border-color: #ffaf00; 
+      opacity: 96%;
+    }
   }
