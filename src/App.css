@@ -16,3 +16,10 @@ body {
   display: inline;
   /* You can also add a background color or border if you want to visually separate the content area */
 }
+
+/* h1  {
+  border-width: 0.01px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #011329, #ffaf00) 1;
+} */
+
