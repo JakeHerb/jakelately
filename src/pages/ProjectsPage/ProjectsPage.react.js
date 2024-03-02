@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectCard from './ProjectCard/ProjectCard.react'; // Adjust path as needed
 import './ProjectsPage.css'; // Styling for the Projects page
-import marsRoverPic from '../../media/marsRover.jpeg';
+import marsRoverPic from './marsRover.jpeg';
 
 
 const projectData = [
