@@ -4,7 +4,6 @@ import './ProjectsPage.css'; // Styling for the Projects page
 import marsRoverPic from './marsRover.jpeg';
 import backdropThumbnail from './BackdropStory.jpeg';
 
-
 const projectData = [
   {
     id: 1,
