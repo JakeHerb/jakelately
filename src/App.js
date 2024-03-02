@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header/Header.react';
 import GoodAtStuff from './components/GoodAtStuff/GoodAtStuff.react';
 import About from './pages/About/About.react';
-import Projects from './pages/Projects/Projects.react';
+import ProjectsPage from './pages/ProjectsPage/ProjectsPage.react';
 import Contact from './pages/Contact/Contact.react';
 import Hero from './components/Hero/Hero.react';
 import Footer from './components/Footer/Footer.react';
@@ -33,7 +33,7 @@ function App() {
         <Header />
         <Routes> {/* Use Routes here */}
           <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<>
             <Hero />

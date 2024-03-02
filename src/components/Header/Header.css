@@ -27,15 +27,14 @@
   font-size: 1.5rem; /* Adjust font size as needed */
 }
 
-
+/* Menu button styles - hidden by default, shown in mobile view */
 .menu-button {
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  margin-left: 20px; /* Add some space between the button and the navigation links */
-  color: #011329;
-  margin-right: 5%;
+  color: #011329; /* Button color */
+  display: none; /* Hidden by default */
 }
 
 .nav {
@@ -77,12 +76,62 @@
   padding: 0 15px; /* Add horizontal padding for spacing between links */
 }
 
+/* Dropdown Menu styles for mobile */
 @media (max-width: 768px) {
+  .menu-button {
+    display: block; /* Show menu button */
+  }
+
   .nav-links {
-    flex-direction: column; /* Stack links vertically on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffaf00; /* Dropdown background color */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .nav-links.open {
+    transform: scaleY(1); /* Show dropdown */
   }
 
   .nav-links li {
-    padding: 10px 0; /* Add vertical padding for spacing between links on mobile */
+    text-align: center; /* Center align links */
+  }
+
+  .nav-links a {
+    padding: 15px; /* Larger touch targets */
+    border-bottom: 1px solid #011329; /* Separators between links */
+  }
+
+  /* Adjust the last link to remove the border */
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+}
+
+/* Initially hide the nav-links in mobile view */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffaf00; /* Dropdown background color */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform-origin: top;
+    transition: transform 0.3s ease-in-out, display 0.3s ease-in-out;
+  }
+
+  /* Display nav-links when open */
+  .nav-links.open {
+    display: flex;
+    transform: scaleY(1);
   }
 }

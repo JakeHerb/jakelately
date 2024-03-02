@@ -6,18 +6,19 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen); // Toggle menu open state
   };
 
   return (
     <header className="header">
-      <div className="header-container"> {/* Add this container */}
+      <div className="header-container">
         <div className="logo">
-          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}> {/* Remove the underline and inherit the color from the parent */}
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
             <h1>Jake Lately</h1>
           </Link>
         </div>
-        <ul className="nav-links">
+        <button className="menu-button" onClick={toggleMenu}>☰</button>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><Link to="/" onClick={toggleMenu}>Home</Link></li>
           <li><Link to="/about" onClick={toggleMenu}>About</Link></li>
           <li><Link to="/projects" onClick={toggleMenu}>Projects</Link></li>

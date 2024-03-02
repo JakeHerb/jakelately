@@ -1,0 +1,38 @@
+/* New class for the link wrapping the card */
+.project-card-link {
+  text-decoration: none; /* Removes underline from links */
+  color: inherit; /* Inherits the text color from parent elements */
+}
+
+.project-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  margin: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Optional: Adds a subtle scaling effect on hover */
+}
+
+.project-card:hover {
+  transform: scale(1.03); /* Slightly enlarges the card on hover */
+}
+
+.project-thumbnail {
+  width: 100%;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 15px;
+}
+
+.project-info h3 {
+  font-family: "Livvic", sans-serif;
+  color: #ffaf00;
+}
+
+.project-info p {
+  color: #f4ddb5;
+}
