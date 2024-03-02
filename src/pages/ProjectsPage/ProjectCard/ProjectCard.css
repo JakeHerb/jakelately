@@ -2,17 +2,28 @@
 .project-card-link {
   text-decoration: none; /* Removes underline from links */
   color: inherit; /* Inherits the text color from parent elements */
+  cursor: pointer;
+  background-color: #ffaf00;
 }
 
 .project-card {
   flex: 1;
-  min-width: 250px;
-  max-width: 300px;
-  margin: 10px;
+  min-width: 300px;
+  max-width: 350px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   border-radius: 8px;
   overflow: hidden;
+  background-color: #d34b24;
   transition: transform 0.3s ease; /* Optional: Adds a subtle scaling effect on hover */
+  margin-bottom: 20px;  
+}
+
+.project-card.wide {
+  grid-column: span 2; /* Wide cards span two columns */
+}
+
+.project-card.tall {
+  grid-row: span 2; /* Tall cards span two rows */
 }
 
 .project-card:hover {
@@ -25,7 +36,7 @@
 }
 
 .project-info {
-  padding: 15px;
+  padding: 5px;
 }
 
 .project-info h3 {

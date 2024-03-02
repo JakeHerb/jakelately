@@ -1,26 +1,36 @@
-.projects-container {
+.projects-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center items horizontally */
-  gap: 20px; /* Space between cards */
-  padding: 20px;
+  justify-content: center;
+  width: 100%; /* Ensure it takes the full width */
 }
 
-.project-card {
-  flex: 1; /* Allows cards to grow to fill available space */
-  min-width: 250px; /* Minimum width for each card */
-  max-width: 300px; /* Maximum width for each card to ensure they don't grow too large */
-  margin: 10px; /* Optional: Adds some space around each card */
+.projects-container {  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 760px; /* Or any max-width that suits your design */
+  margin: 0 auto; /* Center the grid within the wrapper */
 }
+@keyframes color-change {
+  0% { color: #ffaf00; }
+  25% { color: #d34b24; }
+  50% { color: #992800; }
+  75% { color: #3c7f72; }
+  100% { color: #ffaf00; }
+}
+
+.projects-title {
+  padding-top: 20px;
+  font-family: "Livvic", sans-serif;
+  color: #ffaf00;
+  font-size: 30px;
+  animation: color-change 2.0s infinite;
+}
+
+
 
 @media (max-width: 768px) {
   .projects-container {
-    flex-direction: column;
-    align-items: center; /* Center items vertically */
-  }
-
-  .project-card {
-    min-width: 80%; /* Cards take full width of the container on small screens */
-    max-width: 80%; /* Prevents cards from exceeding the container's width */
+    grid-template-columns: 1fr; /* Single column layout for mobile */
+    max-width: 100%; /* Allow the grid to take full width on smaller screens */
   }
 }
