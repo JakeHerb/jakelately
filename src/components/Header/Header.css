@@ -4,7 +4,7 @@
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #ffaf00; /* or any other color that fits the theme */
-  color: #fff;
+  font-family: "Livvic", sans-serif;
 }
 
 .header-container {
@@ -17,12 +17,16 @@
 }
 
 .logo {
-  margin-right: auto; /* This will push everything else to the right */
   font-family: "Chakra Petch", sans-serif;
-  font-size: 0.8rem;
   margin-left: 5%;
-  color: #3c7f72;
 }
+
+.logo h1 {
+  white-space: nowrap; /* Prevents text wrapping */
+  color: #3c7f72; /* Your chosen text color */
+  font-size: 1.5rem; /* Adjust font size as needed */
+}
+
 
 .menu-button {
   background: none;
@@ -47,23 +51,10 @@
   background-color: #011329; /* Match header background */
 }
 
-.nav-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.nav-links li {
-  text-align: center;
-  padding: 0.5rem 0;
-}
 
 .nav-links a {
   text-decoration: none;
-  color: #fff; /* Adjust for better visibility */
+  color: #011329; /* Adjust for better visibility */
   transition: color 0.3s ease;
 }
 
@@ -71,13 +62,27 @@
   color: #0277bd; /* Material blue */
 }
 
+.nav-links {
+  display: flex; /* This will align items horizontally */
+  flex-direction: row; /* Align items in a row for desktop */
+  justify-content: center; /* Center the links if there's extra space */
+  align-items: center; /* Vertically align links in the middle */
+  padding: 0;
+  margin: 0;
+  margin-right: 5%;
+  list-style: none;
+}
+
+.nav-links li {
+  padding: 0 15px; /* Add horizontal padding for spacing between links */
+}
+
 @media (max-width: 768px) {
-  .nav {
-    display: none;
+  .nav-links {
+    flex-direction: column; /* Stack links vertically on mobile */
   }
 
-  .nav.open {
-    display: flex;
+  .nav-links li {
+    padding: 10px 0; /* Add vertical padding for spacing between links on mobile */
   }
-
 }

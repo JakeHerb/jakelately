@@ -2,28 +2,49 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header/Header.react';
 import GoodAtStuff from './components/GoodAtStuff/GoodAtStuff.react';
-import ProjectPage from './components/ProjectPage/ProjectPage.react';
+import About from './pages/About/About.react';
+import Projects from './pages/Projects/Projects.react';
+import Contact from './pages/Contact/Contact.react';
 import Hero from './components/Hero/Hero.react';
 import Footer from './components/Footer/Footer.react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
+
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  apiKey: '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',
+  dangerouslyAllowBrowser: true,
+});
+
+
+async function chatGPT() {
+  const completion = await openai.chat.completions.create({
+    messages: [{ role: "system", content: "You are a helpful assistant. Please write me a song" }],
+    model: "gpt-3.5-turbo",
+  });
+
+  console.log(completion);
+}
 
 function App() {
-
-  const handleButtonClick = () => {
-    console.log("Button clicked!");
-  };
-
   return (
-    <div className="app">
-      <Header />
-      <Hero />
-        <div className="main-content">
-          <GoodAtStuff />
-          <ProjectPage />
-        </div>
-        {/* Other components */}
+    <Router>
+      <div className="app">
+        <Header />
+        <Routes> {/* Use Routes here */}
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<>
+            <Hero />
+            <GoodAtStuff />
+            {/* Include any other components that make up your main landing page */}
+          </>} />
+        </Routes>
         <Footer />
-    </div>
-);
+      </div>
+    </Router>
+  );
 }
 
 export default App;
