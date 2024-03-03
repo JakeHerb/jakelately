@@ -1,8 +1,22 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1480deg);
+  }
+}
+
+.spin-animation {
+  animation: spin 0.4s linear infinite; /* Apply the 'spin' animation */
+}
+
 .projectsBackground {
   background-size: auto;
   background-position: center;
   height: 100vh;
   width: 100%;
+
 }
 
 .dunking-astronaut {
@@ -14,7 +28,6 @@
   object-fit: contain;
   animation: float 3s ease-in-out infinite; 
   z-index: 2;
-  pointer-events: none;
 }
 
 @media (max-width: 800px) {
@@ -24,6 +37,7 @@
     top: 136px; 
     right: 3%; 
     height: 10rem;
+    pointer-events: none;
   }
 }
 
