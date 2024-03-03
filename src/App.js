@@ -7,6 +7,7 @@ import ProjectsPage from './pages/ProjectsPage/ProjectsPage.react';
 import Contact from './pages/Contact/Contact.react';
 import Hero from './components/Hero/Hero.react';
 import Footer from './components/Footer/Footer.react';
+import ProjectDetail from './pages/ProjectsPage/ProjectDetail.react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
 
 import OpenAI from 'openai';
@@ -34,6 +35,7 @@ function App() {
         <Routes> {/* Use Routes here */}
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/:projectId" element={<ProjectDetail />} /> {/* Add this line */}
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<>
             <Hero />

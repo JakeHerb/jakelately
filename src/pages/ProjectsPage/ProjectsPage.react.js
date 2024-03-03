@@ -6,14 +6,14 @@ import backdropThumbnail from './BackdropStory.jpg';
 
 const projectData = [
   {
-    id: 1,
+    id: "360Photos",
     title: 'Facebook: Spherical Photo Uploader',
     thumbnail: marsRoverPic,
     description: 'Building the 360 photo uploader for Facebook.com, the worlds most popular 360 photo rendering surface.',
     size: 'wide' 
   },
   {
-    id: 2,
+    id: "Backdrop",
     title: 'Instagram: Backdrop',
     thumbnail: backdropThumbnail,
     description: "Building Instagram's first image editing feature that uses Generative A.I.",
