@@ -3,6 +3,8 @@ import ProjectCard from './ProjectCard/ProjectCard.react'; // Adjust path as nee
 import './ProjectsPage.css'; // Styling for the Projects page
 import marsRoverPic from './marsRover.jpg';
 import backdropThumbnail from './BackdropStory.jpg';
+import projectBackground from './ProjectsBackground.webp';
+import astronautImage from './dunkinAstronaut.webp';
 
 const projectData = [
   {
@@ -24,18 +26,19 @@ const projectData = [
 function ProjectsPage() {
 
   return (
-    <>
-    <div className="projects-title">
-      <h1>PROJECTS</h1>
-    </div>
-    <div className="projects-wrapper">
-      <div className="projects-container">
-        {projectData.map((project) => (
-          <ProjectCard key={project.id} {...project} />
-        ))}
+    <div className="projectsBackground" style={{ backgroundImage: `url(${projectBackground})` }}>
+      <div className="projects-title">
+        <h1>PROJECTS</h1>
+      </div>
+      <img src={astronautImage} alt="Floating Astronaut" className="dunking-astronaut"/>
+      <div className="projects-wrapper">
+        <div className="projects-container">
+          {projectData.map((project) => (
+            <ProjectCard key={project.id} {...project} />
+          ))}
+        </div>
       </div>
     </div>
-    </>
   );
 }
 

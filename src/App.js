@@ -11,6 +11,7 @@ import ProjectDetail from './pages/ProjectsPage/ProjectDetail.react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
 
 import OpenAI from 'openai';
+import SphericalPhotosProject from './pages/ProjectsPage/ProjectCard/SphericalPhotosProject/SphericalPhotosProject';
 
 const openai = new OpenAI({
   apiKey: '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',
@@ -35,7 +36,8 @@ function App() {
         <Routes> {/* Use Routes here */}
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:projectId" element={<ProjectDetail />} /> {/* Add this line */}
+          <Route path="/projects/360Photos" element={<SphericalPhotosProject />} /> 
+          <Route path="/projects/:projectId" element={<ProjectDetail />} /> 
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<>
             <Hero />

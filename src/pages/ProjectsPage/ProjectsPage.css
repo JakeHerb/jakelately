@@ -1,3 +1,32 @@
+.projectsBackground {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.dunking-astronaut {
+  position: absolute; 
+  top: 20%; 
+  right: 42%; 
+  height: 14rem;
+  width: auto;
+  object-fit: contain;
+  animation: float 3s ease-in-out infinite; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .dunking-astronaut {
+    margin-top: 1rem;
+    z-index: 2;
+    top: 19%; 
+    right: 1%; 
+    height: 12rem;
+  }
+}
+
 .projects-wrapper {
   display: flex;
   justify-content: center;
@@ -13,8 +42,8 @@
 @keyframes color-change {
   0% { color: #ffaf00; }
   25% { color: #d34b24; }
-  50% { color: #992800; }
-  75% { color: #3c7f72; }
+  50% { color: #ffaf00; }
+  75% { color: #992800; }
   100% { color: #ffaf00; }
 }
 
@@ -23,7 +52,17 @@
   font-family: "Livvic", sans-serif;
   color: #ffaf00;
   font-size: 30px;
-  animation: color-change 2.0s infinite;
+  animation: color-change 10.0s infinite;
+}
+
+.projects-title h1 {
+  z-index: 10;
+  position: relative;
+  text-shadow: 
+  -1px -1px 0 #992800,  
+   1px -1px 0 #992800,
+  -1px  1px 0 #992800,
+   1px  1px 0 #992800; 
 }
 
 
