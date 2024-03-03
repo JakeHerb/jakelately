@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // For navigation
 import './ProjectCard.css'; // Styling for the card
-import marsRoverPic from '../marsRover.jpeg';
 
 
 function ProjectCard({ title, thumbnail, description, id, size }) {
-  const image = <img src={marsRoverPic} alt={title} className="project-thumbnail" />;
+  const image = <img src={thumbnail} alt={title} className="project-thumbnail" />;
   // Assign additional class based on the size prop
   const cardClass = `project-card ${size || ''}`;
 

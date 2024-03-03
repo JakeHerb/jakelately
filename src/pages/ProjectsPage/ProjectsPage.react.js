@@ -1,8 +1,8 @@
 import React from 'react';
 import ProjectCard from './ProjectCard/ProjectCard.react'; // Adjust path as needed
 import './ProjectsPage.css'; // Styling for the Projects page
-import marsRoverPic from './marsRover.jpeg';
-import backdropThumbnail from './BackdropStory.jpeg';
+import marsRoverPic from './marsRover.jpg';
+import backdropThumbnail from './BackdropStory.jpg';
 
 const projectData = [
   {
@@ -22,6 +22,7 @@ const projectData = [
 ];
 
 function ProjectsPage() {
+
   return (
     <>
     <div className="projects-title">
