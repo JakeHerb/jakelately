@@ -3,8 +3,8 @@ import ProjectCard from './ProjectCard/ProjectCard.react'; // Adjust path as nee
 import './ProjectsPage.css'; // Styling for the Projects page
 import marsRoverPic from './marsRover.jpg';
 import backdropThumbnail from './BackdropStory.jpg';
-import projectBackground from './ProjectsBackground.webp';
-import astronautImage from './dunkinAstronaut.webp';
+import projectBackground from './ProjectsBackground.png';
+import astronautImage from './dunkinAstronaut.png';
 
 const projectData = [
   {
