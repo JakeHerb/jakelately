@@ -1,29 +1,29 @@
 .projectsBackground {
-  background-size: cover;
+  background-size: auto;
   background-position: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 
 .dunking-astronaut {
   position: absolute; 
-  top: 20%; 
+  top: 17%; 
   right: 42%; 
   height: 14rem;
   width: auto;
   object-fit: contain;
   animation: float 3s ease-in-out infinite; 
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .dunking-astronaut {
     margin-top: 1rem;
     z-index: 2;
-    top: 19%; 
-    right: 1%; 
-    height: 12rem;
+    top: 15%; 
+    right: 3%; 
+    height: 10rem;
   }
 }
 
@@ -39,37 +39,40 @@
   max-width: 760px; /* Or any max-width that suits your design */
   margin: 0 auto; /* Center the grid within the wrapper */
 }
-@keyframes color-change {
-  0% { color: #ffaf00; }
-  25% { color: #d34b24; }
-  50% { color: #ffaf00; }
-  75% { color: #992800; }
-  100% { color: #ffaf00; }
-}
 
 .projects-title {
-  padding-top: 20px;
-  font-family: "Livvic", sans-serif;
+  padding-top: 10px;
+  font-family: "Chakra Petch", sans-serif;
   color: #ffaf00;
   font-size: 30px;
-  animation: color-change 10.0s infinite;
 }
 
 .projects-title h1 {
   z-index: 10;
   position: relative;
-  text-shadow: 
-  -1px -1px 0 #992800,  
-   1px -1px 0 #992800,
-  -1px  1px 0 #992800,
-   1px  1px 0 #992800; 
+  margin-top: 0px; 
+  animation: tilt-n-move-shaking 3.0s infinite;
+}
+
+@keyframes tilt-n-move-shaking {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  47% { transform: translate(0, 0) rotate(0deg); }
+  48% { transform: translate(1px, -1px) rotate(1deg); }
+  80% { transform: translate(0, 0) rotate(0deg); }
 }
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .projects-container {
     grid-template-columns: 1fr; /* Single column layout for mobile */
     max-width: 100%; /* Allow the grid to take full width on smaller screens */
+  }
+
+  @keyframes tilt-n-move-shaking {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(0, 0) rotate(0deg); }
+    60% { transform: translate(-1px, 1px) rotate(-1deg); }
+    70% { transform: translate(0, 0) rotate(0deg); }
   }
 }
