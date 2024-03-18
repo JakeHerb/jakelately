@@ -5,6 +5,7 @@ import marsRoverPic from './marsRover.jpg';
 import backdropThumbnail from './BackdropStory.jpg';
 import projectBackground from './ProjectsBackground.png';
 import astronautImage from './dunkinAstronaut.png';
+import cornellBox from './cornellBox.png';
 
 const projectData = [
   {
@@ -19,6 +20,13 @@ const projectData = [
     title: 'Instagram: Backdrop',
     thumbnail: backdropThumbnail,
     description: "Building Instagram's first image editing feature that uses Generative A.I.",
+    size: 'tall'
+  },
+  {
+    id: "3D",
+    title: '3D Design',
+    thumbnail: cornellBox,
+    description: "This is just where I play around with 3D Web Design",
     size: 'tall'
   }
 ];

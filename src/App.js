@@ -8,6 +8,7 @@ import Contact from './pages/Contact/Contact.react';
 import Hero from './components/Hero/Hero.react';
 import Footer from './components/Footer/Footer.react';
 import ProjectDetail from './pages/ProjectsPage/ProjectDetail.react';
+import ThreeDProject from './pages/ProjectsPage/ProjectCard/ThreeDProject/ThreeDProject.react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
 
 import OpenAI from 'openai';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/360Photos" element={<SphericalPhotosProject />} /> 
+          <Route path="/projects/:3D" element={<ThreeDProject />} /> 
           <Route path="/projects/:projectId" element={<ProjectDetail />} /> 
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<>
