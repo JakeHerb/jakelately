@@ -10,6 +10,7 @@
   flex: 1;
   min-width: 300px;
   max-width: 350px;
+  height: fit-content;
   overflow: hidden;
   transition: transform 0.3s ease; /* Optional: Adds a subtle scaling effect on hover */
   margin-bottom: 20px;
@@ -26,7 +27,7 @@
 }
 
 .project-card.tall {
-  grid-row: span 2; /* Tall cards span two rows */
+  grid-row: span 1; /* Tall cards span two rows */
 }
 
 .project-card:hover {

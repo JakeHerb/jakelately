@@ -23,6 +23,13 @@ const projectData = [
     size: 'tall'
   },
   {
+    id: "ThreeJS",
+    title: 'Learning ThreeJS',
+    thumbnail: astronautImage,
+    description: "Interactive history of learning 3D development with the graphics library ThreeJS",
+    size: 'wide'
+  },
+  {
     id: "3D",
     title: '3D Design',
     thumbnail: cornellBox,

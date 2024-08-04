@@ -9,15 +9,20 @@ function ThreeDProject() {
   // Here you would fetch the project data based on the projectId
   // For now, let's just display the projectId
   return (
+    <>
+    <div className="spline-background">
+      <spline-viewer url="https://prod.spline.design/hNWBdppyHItpHsod/scene.splinecode"></spline-viewer>
+    </div>            
     <div className="wrapper">
       <div className="spherical-info">
         <h1>Cool 3D Stuff</h1>
         <p>watch it wiggle and whatnot</p>
         <div className="viewer-container">
-            <spline-viewer url="https://prod.spline.design/hiHObJ702hTXAetY/scene.splinecode"></spline-viewer>
+            {/* <spline-viewer url="https://prod.spline.design/hiHObJ702hTXAetY/scene.splinecode"></spline-viewer> */}
         </div>
       </div>
     </div>
+    </>
   );
 }
 

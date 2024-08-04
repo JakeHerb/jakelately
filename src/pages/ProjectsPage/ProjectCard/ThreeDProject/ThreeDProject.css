@@ -1,6 +1,7 @@
 .wrapper {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .spherical-info {
@@ -10,4 +11,14 @@
 .title h1 {
     font-family: "Livvic", sans-serif;
     color: #ffaf00;
+}
+
+.viewer-container {
+    width: 200vw;
+}
+
+.spline-background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
 }

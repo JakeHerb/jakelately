@@ -9,10 +9,12 @@ import Hero from './components/Hero/Hero.react';
 import Footer from './components/Footer/Footer.react';
 import ProjectDetail from './pages/ProjectsPage/ProjectDetail.react';
 import ThreeDProject from './pages/ProjectsPage/ProjectCard/ThreeDProject/ThreeDProject.react';
+import PixiJSProject from './pages/ProjectsPage/ProjectCard/PixiJSProject/PixiJSProject.react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
 
 import OpenAI from 'openai';
 import SphericalPhotosProject from './pages/ProjectsPage/ProjectCard/SphericalPhotosProject/SphericalPhotosProject';
+import ThreeJSProject from './pages/ProjectsPage/ProjectCard/ThreeJSProject/ThreeJSProject.react';
 
 const openai = new OpenAI({
   apiKey: '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',
@@ -37,6 +39,7 @@ function App() {
         <Routes> {/* Use Routes here */}
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/projects/ThreeJS" element={<ThreeJSProject />} /> 
           <Route path="/projects/360Photos" element={<SphericalPhotosProject />} /> 
           <Route path="/projects/:3D" element={<ThreeDProject />} /> 
           <Route path="/projects/:projectId" element={<ProjectDetail />} /> 
