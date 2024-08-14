@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import * as THREE from 'three'
 import { Canvas, useFrame } from '@react-three/fiber'
 import './ThreeJSProject.css';
@@ -7,7 +7,7 @@ import { useGLTF, Center, Effects, MeshTransmissionMaterial } from '@react-three
 
 
 function ThreeJSProject() {
-  const [backgroundColor, setBackgroundColor] = useState('red');
+  const [backgroundColor, setBackgroundColor] = useState('#ff9100');
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
@@ -102,32 +102,76 @@ function ThreeJSProject() {
     })
   }
 
+
   function ColorToggleButtons({ setColor }) {
-    const colors = ['#ffaf00', '#ff5757', '#ff9100', '#3c7f72', '#011329', '#f5efe6'];
+    const isMobile = useIsMobile(600);
+    const colors = ['#ffaf00', '#D34A24', '#ff9100', '#3c7f72', '#011329', '#f5efe6'];
   
     return (
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)', // Two equal-width columns
-        gap: '10px', // Space between buttons
+        gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
+        gap: '10px',
       }}>
         {colors.map((color) => (
-          <button
+          <ColorButton
             key={color}
-            onClick={() => setColor(color)}
-            style={{
-              width: '30px',
-              height: '30px',
-              backgroundColor: color,
-              border: 'none',
-              borderRadius: '5px',
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-              cursor: 'pointer',
-            }}
+            color={color}
+            isMobile={isMobile}
+            setColor={setColor}
           />
         ))}
       </div>
     );
   }
+  
+  function ColorButton({ color, isMobile, setColor }) {
+    const [hovered, setHovered] = useState(false);
+  
+    const handleMouseEnter = () => setHovered(true);
+    const handleMouseLeave = () => setHovered(false);
+  
+    const size = isMobile ? '30px' : '40px';
+    const scale = hovered ? 1.2 : 1;
+  
+    return (
+      <button
+        onClick={() => setColor(color)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleMouseEnter} // Handle touch events for mobile
+        onTouchEnd={handleMouseLeave}
+        style={{
+          width: size,
+          height: size,
+          backgroundColor: color,
+          border: 'none',
+          borderRadius: '5px',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+          cursor: 'pointer',
+          transform: `scale(${scale})`,
+          transition: 'transform 0.2s ease-in-out', // Smooth transition
+        }}
+      />
+    );
+  }
+
+
+function useIsMobile(breakpoint = 480) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= breakpoint);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [breakpoint]);
+
+  return isMobile;
+}
 
 export default ThreeJSProject;
