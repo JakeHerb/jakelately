@@ -25,8 +25,8 @@ function ThreeJSProject() {
         <Rig />
       </Canvas>
 
-      {/* UI Controls */}
-      <div style={{
+     {/* UI Controls */}
+     <div style={{
         position: 'fixed',
         top: '10%',
         right: '5%',
@@ -34,7 +34,7 @@ function ThreeJSProject() {
         flexDirection: 'column',
         zIndex: 1000, // Ensures the UI is above the canvas
       }}>
-        <ColorToggleButton color={backgroundColor} setColor={setBackgroundColor} />
+        <ColorToggleButtons setColor={setBackgroundColor} />
       </div>
     </div>
   );
@@ -102,27 +102,31 @@ function ThreeJSProject() {
     })
   }
 
-  function ColorToggleButton({ setColor, color }) {
-    const toggleColor = () => {
-      setColor((prevColor) => (prevColor === 'red' ? 'blue' : 'red'));
-    };
+  function ColorToggleButtons({ setColor }) {
+    const colors = ['#ffaf00', '#ff5757', '#ff9100', '#3c7f72', '#011329', '#f5efe6'];
   
     return (
-      <button
-        onClick={toggleColor}
-        style={{
-          backgroundColor: color,
-          color: 'white',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer',
-          fontSize: '16px',
-          marginBottom: '10px', // Adds spacing between buttons if more are added
-        }}
-      >
-        Toggle to {color === 'red' ? 'blue' : 'red'}
-      </button>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)', // Two equal-width columns
+        gap: '10px', // Space between buttons
+      }}>
+        {colors.map((color) => (
+          <button
+            key={color}
+            onClick={() => setColor(color)}
+            style={{
+              width: '30px',
+              height: '30px',
+              backgroundColor: color,
+              border: 'none',
+              borderRadius: '5px',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+              cursor: 'pointer',
+            }}
+          />
+        ))}
+      </div>
     );
   }
 
