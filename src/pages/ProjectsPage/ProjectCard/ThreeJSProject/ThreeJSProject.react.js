@@ -73,63 +73,14 @@ function StarryBackground() {
   return (
     <Stars 
       radius={100} 
-      depth={50} 
+      depth={150} 
       count={5000} 
       factor={15} 
       saturation={1} 
       fade 
-      speed={1} 
+      speed={1.5} 
       material={starMaterial}  
     />
-  );
-}
-
-function NebulaClouds() {
-  const particlesRef = useRef();
-  const particleCount = 5000;
-
-  // Generate random positions for the particles
-  const positions = useMemo(() => {
-    const posArray = [];
-    for (let i = 0; i < particleCount; i++) {
-      const x = (Math.random() - 0.5) * 10;
-      const y = (Math.random() - 0.5) * 10;
-      const z = (Math.random() - 0.5) * 10;
-      posArray.push(x, y, z);
-    }
-    return new Float32Array(posArray);
-  }, [particleCount]);
-
-  useFrame((state, delta) => {
-    // Animate the particles
-    particlesRef.current.rotation.y += delta * 0.05;
-  });
-
-  return (
-    <>
-      <points ref={particlesRef}>
-        <bufferGeometry attach="geometry">
-          <bufferAttribute
-            attachObject={['attributes', 'position']}
-            array={positions}
-            count={positions.length / 3}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          attach="material"
-          size={0.1}
-          sizeAttenuation
-          color={new THREE.Color('#ff44ff')}
-          transparent
-          opacity={0.8}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
-      </points>
-      <ambientLight intensity={0.2} color="#ff44ff" />
-      <pointLight intensity={1} position={[5, 5, 5]} color="#ffffff" />
-    </>
   );
 }
 
