@@ -9,7 +9,10 @@ const IS_MOBILE_THRESHOLD = 600;
 function ThreeJSProject() {
   const [backgroundColor, setBackgroundColor] = useState('#000000');
   const [selectedModel, setSelectedModel] = useState('cube');
-  const [backgroundType, setBackgroundType] = useState('space'); // New state for background type
+  const [backgroundType, setBackgroundType] = useState('space'); // State for background type
+  const [isMenuOpen, setIsMenuOpen] = useState(true); // State for menu visibility
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen); // Toggle function
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
@@ -18,30 +21,68 @@ function ThreeJSProject() {
         <directionalLight position={[5, 5, 5]} />
         <OrbitControls />
 
+        {/* Conditional rendering of background type */}
         {backgroundType === 'space' && <StarryBackground />}
 
+        {/* Conditional rendering of selected 3D model */}
         {selectedModel === 'cube' && <HollowCube rotating={false} />}
         {selectedModel === 'sphere' && <HollowSphere rotating={false} />}
       </Canvas>
 
-      {/* UI Controls */}
+      {/* Menu Wrapper */}
       <div style={{
         position: 'fixed',
         top: '10%',
-        right: '5%',
-        display: 'flex',
+        right: isMenuOpen ? '5%' : '-220px', // Instantly switch position when toggling
+        display: isMenuOpen ? 'flex' : 'none', // No animation, just appear/disappear
         flexDirection: 'column',
         gap: '20px',
         zIndex: 1000,
+        backgroundColor: isMenuOpen ? 'rgba(0, 0, 0, 0.7)' : 'transparent', // Semi-transparent when open
+        padding: isMenuOpen ? '20px' : '0', // Padding only when open
+        borderRadius: '10px', // Rounded corners
+        width: '200px', // Fixed width
       }}>
-        <ColorToggleButtons setColor={setBackgroundColor} />
-        <ModelToggleButtons setSelectedModel={setSelectedModel} />
-        <BackgroundToggle setBackgroundType={setBackgroundType} />
+        <div>
+          <h4 style={{ color: 'white', textAlign: 'center', marginBottom: '10px' }}>Background Colors</h4>
+          <ColorToggleButtons setColor={setBackgroundColor} />
+        </div>
+
+        <div>
+          <h4 style={{ color: 'white', textAlign: 'center', marginBottom: '10px' }}>Models</h4>
+          <ModelToggleButtons setSelectedModel={setSelectedModel} />
+        </div>
+
+        <div>
+          <h4 style={{ color: 'white', textAlign: 'center', marginBottom: '10px' }}>Background Type</h4>
+          <BackgroundToggle setBackgroundType={setBackgroundType} />
+        </div>
       </div>
+
+      {/* Collapse Button */}
+      <button
+        onClick={toggleMenu}
+        style={{
+          position: 'fixed',
+          top: '10%',
+          right: '5%',
+          padding: '10px',
+          backgroundColor: '#3c7f72',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontWeight: 'bold',
+          zIndex: 1001, // Ensures button stays above everything
+        }}
+      >
+        {isMenuOpen ? 'Close' : 'Open'}
+      </button>
     </div>
   );
 }
 
+/* Starry Background Component */
 function StarryBackground() {
   const starMaterial = useMemo(() => new THREE.ShaderMaterial({
     uniforms: {
@@ -84,9 +125,10 @@ function StarryBackground() {
   );
 }
 
+/* Background Type Toggle Section */
 function BackgroundToggle({ setBackgroundType }) {
   return (
-    <div style={{ display: 'flex', gap: '10px' }}>
+    <div style={{ display: 'flex', gap: '10px', paddingLeft: '10px' }}>
       <button onClick={() => setBackgroundType('space')} style={buttonStyle}>
         Space
       </button>
@@ -97,6 +139,7 @@ function BackgroundToggle({ setBackgroundType }) {
   );
 }
 
+/* Button Style (Customizable) */
 const buttonStyle = {
   padding: '10px 20px',
   backgroundColor: '#3c7f72',
@@ -107,6 +150,7 @@ const buttonStyle = {
   fontWeight: 'bold',
 };
 
+/* Hollow Cube Component */
 function HollowCube({ rotating }) {
   const meshRef = useRef();
 
@@ -131,6 +175,7 @@ function HollowCube({ rotating }) {
   );
 }
 
+/* Hollow Sphere Component */
 function HollowSphere({ rotating }) {
   const meshRef = useRef();
 
@@ -149,6 +194,7 @@ function HollowSphere({ rotating }) {
   );
 }
 
+/* MiniCanvas Component for Model Buttons */
 function MiniCanvas({ children, onClick }) {
   return (
     <Canvas
@@ -168,13 +214,15 @@ function MiniCanvas({ children, onClick }) {
   );
 }
 
+/* Model Toggle Buttons Section */
 function ModelToggleButtons({ setSelectedModel }) {
   const isMobile = useIsMobile(IS_MOBILE_THRESHOLD);
   return (
     <div style={{
       display: 'grid',
       gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-      gap: '10px',
+      paddingLeft: '20px',
+      width: '100%',
     }}>
       <MiniCanvas onClick={() => setSelectedModel('cube')}>
         <HollowCube rotating />
@@ -186,6 +234,7 @@ function ModelToggleButtons({ setSelectedModel }) {
   );
 }
 
+/* Color Toggle Buttons Section */
 function ColorToggleButtons({ setColor }) {
   const isMobile = useIsMobile(IS_MOBILE_THRESHOLD);
   const colors = ['#ffaf00', '#D34A24', '#ff9100', '#3c7f72', '#011329', '#f5efe6'];
@@ -193,9 +242,11 @@ function ColorToggleButtons({ setColor }) {
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(2, 1fr)',  // Fixed 2-column layout
+      gridTemplateColumns: 'repeat(3, 1fr)',  // Fixed 2-column layout
+      justifyContent: "center",
       gap: '10px',
-      maxWidth: '120px',  // Prevent spreading out when other controls expand
+      paddingLeft: '20px',
+      maxWidth: '100%',  // Prevent spreading out when other controls expand
     }}>
       {colors.map((color) => (
         <ColorButton
@@ -209,6 +260,7 @@ function ColorToggleButtons({ setColor }) {
   );
 }
 
+/* Color Button Component */
 function ColorButton({ color, isMobile, setColor }) {
   const [hovered, setHovered] = useState(false);
 
@@ -240,6 +292,7 @@ function ColorButton({ color, isMobile, setColor }) {
   );
 }
 
+/* Hook to detect mobile screens */
 function useIsMobile(breakpoint = 480) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
 

@@ -67,7 +67,7 @@ function ProjectsPage() {
   }, [isSpinning]);
 
   return (
-    <div className="projectsBackground" style={{ backgroundImage: `url(${projectBackground})` }}>
+    <div>
       <div className="projects-title">
         <h1>PROJECTS</h1>
       </div>

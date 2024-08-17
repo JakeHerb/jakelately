@@ -9,7 +9,7 @@
 .project-card {
   flex: 1;
   min-width: 300px;
-  max-width: 350px;
+  max-width: 80%;
   height: fit-content;
   overflow: hidden;
   transition: transform 0.3s ease; /* Optional: Adds a subtle scaling effect on hover */

@@ -11,14 +11,6 @@
   animation: spin 0.4s linear infinite; /* Apply the 'spin' animation */
 }
 
-.projectsBackground {
-  background-size: auto;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-
-}
-
 .dunking-astronaut {
   position: absolute; 
   top: 17%; 
@@ -50,7 +42,6 @@
 .projects-container {  
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  max-width: 760px; /* Or any max-width that suits your design */
   margin: 0 auto; /* Center the grid within the wrapper */
 }
 
