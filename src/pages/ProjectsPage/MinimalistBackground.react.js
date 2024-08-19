@@ -1,6 +1,6 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { MeshWobbleMaterial, useTexture, Points } from '@react-three/drei';
+import { MeshWobbleMaterial, Points } from '@react-three/drei';
 import * as THREE from 'three';
 
 function FloatingShapes() {
@@ -9,6 +9,16 @@ function FloatingShapes() {
   const tetrahedronRef = useRef();
   const torusRef = useRef();
   const lightRef = useRef();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+
+  // Update positions based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Randomized colors
   const colors = ['#ffaf00', '#3c7f72', '#ff9100', '#D34A24', '#ff44ff', '#00c9ff'];
@@ -55,25 +65,25 @@ function FloatingShapes() {
   return (
     <>
       {/* Floating Cube */}
-      <mesh ref={cubeRef} position={[-2, 0, 0]} castShadow>
+      <mesh ref={cubeRef} position={isMobile ? [1, 2, -1] : [-2, 0, 0]} castShadow>
         <boxGeometry args={[1.5, 1.5, 1.5]} />
         <MeshWobbleMaterial speed={1} factor={0.3} />
       </mesh>
 
       {/* Floating Sphere */}
-      <mesh ref={sphereRef} position={[2, 0, 0]} castShadow>
+      <mesh ref={sphereRef} position={isMobile ? [-1.5, -1.5, 0] : [2.5, 0, 0]} castShadow>
         <sphereGeometry args={[1, 32, 32]} />
         <MeshWobbleMaterial speed={0.8} factor={0.3} />
       </mesh>
 
       {/* Floating Tetrahedron */}
-      <mesh ref={tetrahedronRef} position={[-1.5, -2, 0]} castShadow>
+      <mesh ref={tetrahedronRef} position={isMobile ? [1.5, -2, 0] : [-1.5, -2, 0]} castShadow>
         <tetrahedronGeometry args={[1.2, 0]} />
         <meshStandardMaterial color="#D34A24" />
       </mesh>
 
       {/* Floating Torus Knot */}
-      <mesh ref={torusRef} position={[1.5, -2, 0]} castShadow>
+      <mesh ref={torusRef} position={isMobile ?  [-1, -1.7, 1] : [1.5, -2, 0]} castShadow>
         <torusKnotGeometry args={[0.7, 0.3, 100, 16]} />
         <meshStandardMaterial color="#ff44ff" />
       </mesh>
