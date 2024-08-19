@@ -4,6 +4,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import './ThreeJSProject.css';
 
+// Viewport/cursor state logic 
+// https://tornis.robbowen.digital/
+
 const IS_MOBILE_THRESHOLD = 600;
 
 function ThreeJSProject() {
@@ -25,7 +28,7 @@ function ThreeJSProject() {
         {backgroundType === 'space' && <StarryBackground />}
 
         {/* Conditional rendering of selected 3D model */}
-        {selectedModel === 'cube' && <HollowCube rotating={false} />}
+        {selectedModel === 'cube' && <Cube rotating={false} velX={.1} />}
         {selectedModel === 'sphere' && <HollowSphere rotating={false} />}
       </Canvas>
 
@@ -150,26 +153,25 @@ const buttonStyle = {
   fontWeight: 'bold',
 };
 
-/* Hollow Cube Component */
-function HollowCube({ rotating }) {
+/* Cube Component */
+function Cube({ rotating, velX, velY }) {
   const meshRef = useRef();
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (rotating) {
-      meshRef.current.rotation.y += 0.01;
-      meshRef.current.rotation.x += 0.01;
+      meshRef.current.rotation.y += delta;
+      meshRef.current.rotation.x += delta;
+    }
+    if (velX) {
+      meshRef.current.positionX += delta * 10;
     }
   });
 
   return (
     <group ref={meshRef} position={[0, 0, 0]}>
-      <mesh scale={[1.02, 1.02, 1.02]}>
-        <boxGeometry args={[2, 2, 2]} />
-        <meshStandardMaterial color={'#ffaf00'} wireframe />
-      </mesh>
       <mesh>
         <boxGeometry args={[2, 2, 2]} />
-        <meshStandardMaterial color={'#ffaf00'} wireframe />
+        <meshStandardMaterial color={'#ffaf00'} />
       </mesh>
     </group>
   );
@@ -189,7 +191,7 @@ function HollowSphere({ rotating }) {
   return (
     <mesh ref={meshRef} position={[0, 0, 0]}>
       <sphereGeometry args={[1.5, 32, 32]} />
-      <meshStandardMaterial color={'#3c7f72'} wireframe />
+      <meshStandardMaterial color={'#3c7f72'} />
     </mesh>
   );
 }
@@ -225,7 +227,7 @@ function ModelToggleButtons({ setSelectedModel }) {
       width: '100%',
     }}>
       <MiniCanvas onClick={() => setSelectedModel('cube')}>
-        <HollowCube rotating />
+        <Cube rotating />
       </MiniCanvas>
       <MiniCanvas onClick={() => setSelectedModel('sphere')}>
         <HollowSphere rotating />

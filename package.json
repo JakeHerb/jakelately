@@ -27,6 +27,7 @@
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "three": "^0.167.1",
+    "tornis": "^0.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import ProjectCard from './ProjectCard/ProjectCard.react'; // Adjust path as needed
-import './ProjectsPage.css'; // Styling for the Projects page
+import React, { useState } from 'react';
+import './ProjectsPage.css'; 
 import marsRoverPic from './marsRover.jpg';
 import backdropThumbnail from './BackdropStory.jpg';
-import projectBackground from './ProjectsBackground.png';
 import astronautImage from './dunkinAstronaut.png';
 import cornellBox from './cornellBox.png';
 
@@ -13,73 +11,79 @@ const projectData = [
     title: 'Facebook: Spherical Photo Uploader',
     thumbnail: marsRoverPic,
     description: 'Building the 360 photo uploader for Facebook.com, the worlds most popular 360 photo rendering surface.',
-    size: 'wide' 
+    link: '/projects/360Photos'
   },
   {
     id: "Backdrop",
     title: 'Instagram: Backdrop',
     thumbnail: backdropThumbnail,
     description: "Building Instagram's first image editing feature that uses Generative A.I.",
-    size: 'tall'
+    link: '/projects/Backdrop'
   },
   {
     id: "ThreeJS",
     title: 'Learning ThreeJS',
     thumbnail: astronautImage,
-    description: "Interactive history of learning 3D development with the graphics library ThreeJS",
-    size: 'wide'
+    description: "Interactive history of learning 3D development with the graphics library ThreeJS.",
+    link: '/projects/ThreeJS'
   },
   {
     id: "3D",
     title: '3D Design',
     thumbnail: cornellBox,
-    description: "This is just where I play around with 3D Web Design",
-    size: 'tall'
+    description: "This is just where I play around with 3D Web Design.",
+    link: '/projects/3D'
   }
 ];
 
 function ProjectsPage() {
+  const [flippedCard, setFlippedCard] = useState(null); // Track the flipped card
 
-  const [isSpinning, setIsSpinning] = useState(false);
-
-  const handleSpinToggle = () => {
-    setIsSpinning(true);
-
-    // Set a timeout to reset isSpinning back to false after 2 seconds
-    const timeoutId = setTimeout(() => {
-      setIsSpinning(false);
-    }, 2000); // 2000 milliseconds = 2 seconds
-
-    // Cleanup timeout when component unmounts or before re-running the effect
-    return () => clearTimeout(timeoutId);
+  const handleFlip = (cardId) => {
+    setFlippedCard(prevCard => (prevCard === cardId ? null : cardId)); // Flip only one card at a time
   };
 
-  // useEffect to handle cleanup
-  useEffect(() => {
-    let timeoutId;
-    if (isSpinning) {
-      timeoutId = setTimeout(() => {
-        setIsSpinning(false);
-      }, 5000);
-    }
-
-    return () => clearTimeout(timeoutId);
-  }, [isSpinning]);
-
   return (
-    <div>
+    <div className="projects-page">
       <div className="projects-title">
         <h1>PROJECTS</h1>
       </div>
-      <div className={`animated-background ${isSpinning ? 'spin-animation' : 'float-animation'}`} onClick={handleSpinToggle}>
-        <img src={astronautImage} alt="Floating Astronaut" className="dunking-astronaut"/>
+      <div className="projects-container">
+        {projectData.map((project) => (
+          <FlippableCard 
+            key={project.id} 
+            project={project} 
+            isFlipped={flippedCard === project.id} 
+            onFlip={() => handleFlip(project.id)} 
+          />
+        ))}
       </div>
-      <div className="projects-wrapper">
-        <div className="projects-container">
-          {projectData.map((project) => (
-            <ProjectCard key={project.id} {...project} />
-          ))}
+    </div>
+  );
+}
+
+function FlippableCard({ project, isFlipped, onFlip }) {
+  return (
+    <div
+      className={`project-card ${isFlipped ? 'flipped' : ''}`}
+      onClick={onFlip} // Flip the card only on click
+    >
+      <div className="card-inner">
+        {/* Front of the card */}
+        <div className="card-face card-front">
+          <img src={project.thumbnail} alt={project.title} className="project-thumbnail" />
+          <div className="project-info">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+          </div>
         </div>
+
+        {/* Back of the card */}
+        <a href={project.link} className="card-face card-back">
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <span>Check it out</span>
+        </a>
       </div>
     </div>
   );

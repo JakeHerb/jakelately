@@ -1,83 +1,122 @@
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(1480deg);
-  }
-}
-
-.spin-animation {
-  animation: spin 0.4s linear infinite; /* Apply the 'spin' animation */
-}
-
-.dunking-astronaut {
-  position: absolute; 
-  top: 17%; 
-  right: 42%; 
-  height: 14rem;
-  width: auto;
-  object-fit: contain;
-  animation: float 3s ease-in-out infinite; 
-  z-index: 2;
-}
-
-@media (max-width: 800px) {
-  .dunking-astronaut {
-    margin-top: 1rem;
-    z-index: 2;
-    top: 136px; 
-    right: 3%; 
-    height: 10rem;
-    pointer-events: none;
-  }
-}
-
-.projects-wrapper {
+/* Projects Page */
+.projects-page {
   display: flex;
-  justify-content: center;
-  width: 100%; /* Ensure it takes the full width */
-}
-
-.projects-container {  
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin: 0 auto; /* Center the grid within the wrapper */
-}
-
-.projects-title {
-  padding-top: 10px;
-  font-family: "Chakra Petch", sans-serif;
-  color: #ffaf00;
-  font-size: 30px;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background: #011329;
 }
 
 .projects-title h1 {
-  z-index: 10;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 36px;
+  color: #ffaf00;
+  margin-bottom: 30px;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  justify-items: center;
+}
+
+/* Project Card */
+.project-card {
+  width: 230px;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-origin: center center;
   position: relative;
-  margin-top: 0px; 
-  animation: tilt-n-move-shaking 3.0s infinite;
 }
 
-@keyframes tilt-n-move-shaking {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  47% { transform: translate(0, 0) rotate(0deg); }
-  48% { transform: translate(1px, -1px) rotate(1deg); }
-  80% { transform: translate(0, 0) rotate(0deg); }
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  transform-origin: center center;
+}
 
+.flipped .card-inner {
+  transform: rotateY(180deg) translateX(-40px);
+}
 
-@media (max-width: 800px) {
-  .projects-container {
-    grid-template-columns: 1fr; /* Single column layout for mobile */
-    max-width: 100%; /* Allow the grid to take full width on smaller screens */
-  }
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 20px;
+  /* Make sure the text isn't underlined */
+  text-decoration: none;
+}
 
-  @keyframes tilt-n-move-shaking {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(0, 0) rotate(0deg); }
-    60% { transform: translate(-1px, 1px) rotate(-1deg); }
-    70% { transform: translate(0, 0) rotate(0deg); }
-  }
+/* Front Face */
+.card-front {
+  background-color: #ffaf00;
+  color: #011329;
+}
+
+/* Back Face */
+.card-back {
+  background-color: #3c7f72;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-back a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffaf00;
+}
+
+.card-back a:hover {
+  color: #ffd700;
+}
+
+/* Thumbnail Image */
+.project-thumbnail {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.project-info h3 {
+  font-family: 'Livvic', sans-serif;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.project-info p {
+  font-size: 16px;
+  color: #011329;
 }
