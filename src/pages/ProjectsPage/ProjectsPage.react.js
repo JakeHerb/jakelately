@@ -79,11 +79,12 @@ function FlippableCard({ project, isFlipped, onFlip }) {
         </div>
 
         {/* Back of the card */}
-        <a href={project.link} className="card-face card-back">
+        <div className="card-face card-back">
           <h3>{project.title}</h3>
+          <div className="divider"></div>
           <p>{project.description}</p>
-          <span>Check it out</span>
-        </a>
+          <a href={project.link}>Check it out</a>
+        </div>
       </div>
     </div>
   );
