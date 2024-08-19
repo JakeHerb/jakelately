@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  background: #011329;
 }
 
 .projects-title h1 {
@@ -67,6 +66,7 @@
   text-align: center;
   padding: 20px;
   text-decoration: none;
+  opacity: 95%;
 }
 
 /* Add horizontal dividers for card sections */
@@ -85,7 +85,7 @@
 
 /* Back Face */
 .card-back {
-  background: linear-gradient(195deg, transparent 0%, transparent 15%, #ff9100 92%);
+  background: linear-gradient(195deg, transparent 0%, #ff9100 92%);
   color: white;
   transform: rotateY(180deg);
   display: flex;

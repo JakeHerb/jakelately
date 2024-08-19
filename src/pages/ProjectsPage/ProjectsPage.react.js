@@ -4,7 +4,7 @@ import marsRoverPic from './marsRover.jpg';
 import backdropThumbnail from './BackdropStory.jpg';
 import astronautImage from './dunkinAstronaut.png';
 import cornellBox from './cornellBox.png';
-
+import MinimalistBackground from './MinimalistBackground.react';
 const projectData = [
   {
     id: "360Photos",
@@ -45,9 +45,13 @@ function ProjectsPage() {
 
   return (
     <div className="projects-page">
+      {/* The new minimalist background */}
+      <MinimalistBackground /> 
+
       <div className="projects-title">
         <h1>PROJECTS</h1>
       </div>
+
       <div className="projects-container">
         {projectData.map((project) => (
           <FlippableCard 
