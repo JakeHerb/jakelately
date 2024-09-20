@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SpotiFindProject.css';
-import awsconfig from '../../../../aws-exports'; // Adjust the path if necessary
+import awsconfig from '../../../../aws-exports.js'; // Adjust the path if necessary
 
 function SpotiFindProject() {
   const [searchQuery, setSearchQuery] = useState('');
