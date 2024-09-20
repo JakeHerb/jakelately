@@ -1,0 +1,47 @@
+/* Container for the entire component */
+.spotifind-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Styling for the main content area */
+  .spotifind-info {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  /* Search container styling */
+  .search-container {
+    margin-top: 20px;
+  }
+  
+  /* Styling for the search input field */
+  .search-input {
+    width: 70%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Styling for the search button */
+  .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1DB954; /* Spotify green color */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Optional: Add some hover effects */
+  .search-button:hover {
+    background-color: #1ed760;
+  }
+  
+  /* Results container styling */
+  .results-container {
+    margin-top: 30px;
+  }
+  

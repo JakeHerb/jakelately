@@ -7,11 +7,11 @@ import cornellBox from './cornellBox.png';
 import MinimalistBackground from './MinimalistBackground.react';
 const projectData = [
   {
-    id: "360Photos",
-    title: 'Facebook: Spherical Photo Uploader',
-    thumbnail: marsRoverPic,
-    description: 'Building the 360 photo uploader for Facebook.com, the worlds most popular 360 photo rendering surface.',
-    link: '/projects/360Photos'
+    id: "Spotify",
+    title: 'SpotiFind',
+    thumbnail: cornellBox,
+    description: "Web App to request and display information about music from the Spotify Developer API.",
+    link: '/projects/SpotiFind'
   },
   {
     id: "Backdrop",

@@ -1,0 +1,26 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify4ac8b4fd7e2a4-staging-11918-authRole",
+      "UnauthRoleArn": "arn:aws:iam::329309587997:role/amplify-amplify4ac8b4fd7e2a4-staging-11918-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::329309587997:role/amplify-amplify4ac8b4fd7e2a4-staging-11918-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-amplify4ac8b4fd7e2a4-staging-11918-deployment",
+      "UnauthRoleName": "amplify-amplify4ac8b4fd7e2a4-staging-11918-unauthRole",
+      "StackName": "amplify-amplify4ac8b4fd7e2a4-staging-11918",
+      "StackId": "arn:aws:cloudformation:us-west-2:329309587997:stack/amplify-amplify4ac8b4fd7e2a4-staging-11918/005b25d0-f4ee-11ec-88b6-0259fdab4143",
+      "AmplifyAppId": "dneca9ura3xrm"
+    },
+    "categories": {
+      "function": {
+        "spotifyFunction": {
+          "deploymentBucketName": "amplify-amplify4ac8b4fd7e2a4-staging-11918-deployment",
+          "s3Key": "amplify-builds/spotifyFunction-6547594d4a5334466937-build.zip"
+        }
+      },
+      "api": {
+        "spotifyAPI": {}
+      }
+    }
+  }
+}

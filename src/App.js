@@ -10,24 +10,25 @@ import Footer from './components/Footer/Footer.react';
 import ProjectDetail from './pages/ProjectsPage/ProjectDetail.react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
 
-import OpenAI from 'openai';
-import SphericalPhotosProject from './pages/ProjectsPage/ProjectCard/SphericalPhotosProject/SphericalPhotosProject';
+// import OpenAI from 'openai';
 import ThreeJSProject from './pages/ProjectsPage/ProjectCard/ThreeJSProject/ThreeJSProject.react';
-
-const openai = new OpenAI({
-  apiKey: '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',
-  dangerouslyAllowBrowser: true,
-});
+import SpotiFindProject from './pages/ProjectsPage/ProjectCard/SpotiFindProject/SpotiFindProject';
 
 
-async function chatGPT() {
-  const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "You are a helpful assistant. Please write me a song" }],
-    model: "gpt-3.5-turbo",
-  });
+// const openai = new OpenAI({
+//   apiKey: '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',
+//   dangerouslyAllowBrowser: true,
+// });
 
-  console.log(completion);
-}
+
+// async function chatGPT() {
+//   const completion = await openai.chat.completions.create({
+//     messages: [{ role: "system", content: "You are a helpful assistant. Please write me a song" }],
+//     model: "gpt-3.5-turbo",
+//   });
+
+//   console.log(completion);
+// }
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/ThreeJS" element={<ThreeJSProject />} /> 
-          <Route path="/projects/360Photos" element={<SphericalPhotosProject />} /> 
+          <Route path="/projects/SpotiFind" element={<SpotiFindProject />} /> 
           <Route path="/projects/:projectId" element={<ProjectDetail />} /> 
           <Route path="/contact" element={<Contact />} />
           <Route path="/" element={<>
