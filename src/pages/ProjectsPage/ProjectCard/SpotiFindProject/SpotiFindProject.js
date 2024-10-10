@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SpotiFindProject.css';
-import awsconfig from '../../../../aws-exports.js'; // Adjust the path if necessary
+
+// Import awsconfig safely
+let awsconfig;
+try {
+  awsconfig = require('../../../../aws-exports.js'); // Adjust if necessary
+} catch (e) {
+  console.error('aws-exports.js not found. Please ensure Amplify backend is properly set up.', e);
+}
 
 function SpotiFindProject() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,10 +18,8 @@ function SpotiFindProject() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Extract the API endpoint from awsconfig
-  const API_BASE_URL = awsconfig.aws_cloud_logic_custom[0].endpoint;
+  const API_BASE_URL = awsconfig?.aws_cloud_logic_custom?.[0]?.endpoint || '';
 
-  // Handler for when the search form is submitted
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
@@ -32,50 +37,28 @@ function SpotiFindProject() {
       setResults(response.data.tracks.items);
     } catch (error) {
       console.error('Error fetching search results:', error);
-      if (error.response) {
-        console.error('Response data:', error.response.data);
-        console.error('Response status:', error.response.status);
-        console.error('Response headers:', error.response.headers);
-      } else if (error.request) {
-        console.error('No response received:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
       setErrorMessage('An error occurred while fetching search results.');
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Fetch track details when a track is selected
   useEffect(() => {
     const fetchTrackDetails = async () => {
       if (selectedTrack) {
         setIsLoading(true);
         setErrorMessage('');
         try {
-          console.log(`Fetching details for track ID: ${selectedTrack.id}`);
           const [analysisResponse, featuresResponse] = await Promise.all([
             axios.get(`${API_BASE_URL}/audio-analysis/${selectedTrack.id}`),
             axios.get(`${API_BASE_URL}/audio-features/${selectedTrack.id}`),
           ]);
-          console.log('Analysis response:', analysisResponse.data);
-          console.log('Features response:', featuresResponse.data);
           setTrackDetails({
             analysis: analysisResponse.data,
             features: featuresResponse.data,
           });
         } catch (error) {
           console.error('Error fetching track details:', error);
-          if (error.response) {
-            console.error('Response data:', error.response.data);
-            console.error('Response status:', error.response.status);
-            console.error('Response headers:', error.response.headers);
-          } else if (error.request) {
-            console.error('No response received:', error.request);
-          } else {
-            console.error('Error message:', error.message);
-          }
           setErrorMessage('An error occurred while fetching track details.');
         } finally {
           setIsLoading(false);
