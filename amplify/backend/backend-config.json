@@ -21,5 +21,23 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
+  },
+  "parameters": {
+    "AMPLIFY_function_spotifyFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "spotifyFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_spotifyFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "spotifyFunction"
+        }
+      ]
+    }
   }
 }

@@ -1,8 +1,8 @@
 {
   "version": 1,
   "paths": {
-    "/": {
-      "name": "/",
+    "/search": {
+      "name": "/search",
       "lambdaFunction": "spotifyFunction",
       "permissions": {
         "setting": "open"

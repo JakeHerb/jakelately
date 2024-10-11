@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SpotiFindProject.css';
-
-// Import awsconfig safely
-let awsconfig;
-try {
-  awsconfig = require('../../../../aws-exports.js'); // Adjust if necessary
-} catch (e) {
-  console.error('aws-exports.js not found. Please ensure Amplify backend is properly set up.', e);
-}
+import awsconfig from '../../../../aws-exports.js';
 
 function SpotiFindProject() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,8 +26,12 @@ function SpotiFindProject() {
       const response = await axios.get(`${API_BASE_URL}/search`, {
         params: { q: searchQuery },
       });
-      console.log('Search response:', response.data);
-      setResults(response.data.tracks.items);
+      if (response.data?.tracks?.items) {
+        setResults(response.data.tracks.items);
+      } else {
+        setResults([]);
+        setErrorMessage('No results found.');
+      }
     } catch (error) {
       console.error('Error fetching search results:', error);
       setErrorMessage('An error occurred while fetching search results.');
@@ -49,6 +46,7 @@ function SpotiFindProject() {
         setIsLoading(true);
         setErrorMessage('');
         try {
+          console.log(`Fetching details for track ID: ${selectedTrack.id}`);
           const [analysisResponse, featuresResponse] = await Promise.all([
             axios.get(`${API_BASE_URL}/audio-analysis/${selectedTrack.id}`),
             axios.get(`${API_BASE_URL}/audio-features/${selectedTrack.id}`),
@@ -97,7 +95,7 @@ function SpotiFindProject() {
               ))}
             </ul>
           ) : (
-            <p>No results to display yet.</p>
+            !isLoading && <p>No results to display yet.</p>
           )}
         </div>
         {trackDetails && (

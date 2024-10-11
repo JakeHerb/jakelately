@@ -37,7 +37,13 @@
     },
     "categories": {
       "function": {
-        "spotifyFunction": {}
+        "spotifyFunction": {
+          "deploymentBucketName": "amplify-jakelately-main-82b3f-deployment",
+          "s3Key": "amplify-builds/spotifyFunction-6547594d4a5334466937-build.zip"
+        }
+      },
+      "api": {
+        "spotifyAPI": {}
       }
     }
   }
