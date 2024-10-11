@@ -22,5 +22,23 @@
         "spotifyAPI": {}
       }
     }
+  },
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-jakelately-main-82b3f-authRole",
+      "UnauthRoleArn": "arn:aws:iam::329309587997:role/amplify-jakelately-main-82b3f-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::329309587997:role/amplify-jakelately-main-82b3f-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-jakelately-main-82b3f-deployment",
+      "UnauthRoleName": "amplify-jakelately-main-82b3f-unauthRole",
+      "StackName": "amplify-jakelately-main-82b3f",
+      "StackId": "arn:aws:cloudformation:us-west-2:329309587997:stack/amplify-jakelately-main-82b3f/91062670-8808-11ef-bbc3-02fe0b57a09f",
+      "AmplifyAppId": "dneca9ura3xrm"
+    },
+    "categories": {
+      "function": {
+        "spotifyFunction": {}
+      }
+    }
   }
 }
