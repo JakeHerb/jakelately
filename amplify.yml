@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 16.14
+        - npm install -g @aws-amplify/cli
+        - npm ci
+        - amplifyPull --amplifyAppId $AMPLIFY_APP_ID --envName main
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
