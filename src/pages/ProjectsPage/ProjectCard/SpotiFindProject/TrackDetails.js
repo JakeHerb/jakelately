@@ -2,7 +2,13 @@ import React from 'react';
 import AudioFeaturesTable from './AudioFeaturesTable';
 import AudioFeaturesRadarChart from './AudioFeaturesRadarChart';
 import LoudnessBarChart from './LoudnessBarChart';
-import './TrackDetails.css'; // We'll create this CSS file next
+import ConfidenceLevels from './ConfidenceLevels';
+import SectionsTimeline from './SectionsTimeline';
+import PitchesHeatmap from './PitchesHeatmap';
+import SegmentsTable from './SegmentsTable';
+import AnalysisMeta from './AnalysisMeta';
+import PitchDistributionChart from './PitchDistributionChart';
+import './TrackDetails.css';
 
 function TrackDetails({ track, details, onBack }) {
   return (
@@ -24,8 +30,19 @@ function TrackDetails({ track, details, onBack }) {
       <AudioFeaturesTable features={details.features} />
       {/* Audio Features Radar Chart */}
       <AudioFeaturesRadarChart features={details.features} />
+      {/* Confidence Levels */}
+      <ConfidenceLevels trackAnalysis={details.analysis.track} />
+      {/* Sections Timeline */}
+      <SectionsTimeline sections={details.analysis.sections} />
       {/* Loudness Bar Chart */}
       <LoudnessBarChart analysis={details.analysis} />
+      {/* Pitches Heatmap */}
+      <PitchesHeatmap segments={details.analysis.segments} />
+      <PitchDistributionChart segments={details.analysis.segments} />
+      {/* Segments Table */}
+      <SegmentsTable segments={details.analysis.segments} />
+      {/* Analysis Meta Data */}
+      <AnalysisMeta meta={details.analysis.meta} />
     </div>
   );
 }

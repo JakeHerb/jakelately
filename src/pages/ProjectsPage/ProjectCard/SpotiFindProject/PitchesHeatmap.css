@@ -1,0 +1,13 @@
+.pitches-heatmap {
+    margin-top: 40px;
+  }
+  
+  .pitches-heatmap h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .heatmap-container {
+    overflow-x: scroll;
+  }
+  

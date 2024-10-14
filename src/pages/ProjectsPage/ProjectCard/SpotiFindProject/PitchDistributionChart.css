@@ -1,0 +1,31 @@
+.pitch-distribution-chart {
+    margin-top: 40px;
+  }
+  
+  .pitch-distribution-chart h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .chart-item {
+    width: 45%;
+    margin-bottom: 40px;
+  }
+  
+  .chart-item h4 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .chart-item {
+      width: 100%;
+    }
+  }
+  

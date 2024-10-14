@@ -1,5 +1,10 @@
 import React from 'react';
-import './AudioFeaturesTable.css'; // We'll create this CSS file next
+import './AudioFeaturesTable.css';
+
+function getKey(key) {
+  const keys = ['C', 'C♯/D♭', 'D', 'D♯/E♭', 'E', 'F', 'F♯/G♭', 'G', 'G♯/A♭', 'A', 'A♯/B♭', 'B'];
+  return keys[key] || 'Unknown';
+}
 
 function AudioFeaturesTable({ features }) {
   return (
@@ -23,15 +28,19 @@ function AudioFeaturesTable({ features }) {
           </tr>
           <tr>
             <td>Key</td>
-            <td>{features.key}</td>
-          </tr>
-          <tr>
-            <td>Loudness</td>
-            <td>{features.loudness} dB</td>
+            <td>{getKey(features.key)}</td>
           </tr>
           <tr>
             <td>Mode</td>
             <td>{features.mode === 1 ? 'Major' : 'Minor'}</td>
+          </tr>
+          <tr>
+            <td>Time Signature</td>
+            <td>{features.time_signature}</td>
+          </tr>
+          <tr>
+            <td>Loudness</td>
+            <td>{features.loudness} dB</td>
           </tr>
           <tr>
             <td>Speechiness</td>
