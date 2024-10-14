@@ -1,0 +1,29 @@
+.audio-features-table {
+    margin-top: 30px;
+  }
+  
+  .audio-features-table h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .audio-features-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .audio-features-table th,
+  .audio-features-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .audio-features-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .audio-features-table td {
+    text-align: left;
+  }
+  

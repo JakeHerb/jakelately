@@ -1,63 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './SpotiFindProject.css';
-
-// Reusable component for search results
-function TrackList({ tracks, onSelectTrack }) {
-  return (
-    <div className="results-container">
-      {tracks.length > 0 ? (
-        <ul className="results-list">
-          {tracks.map((track) => (
-            <li key={track.id} className="track-item">
-              <img
-                src={track.album.images[2]?.url || 'placeholder.jpg'}
-                alt={`${track.name} album art`}
-                className="album-art"
-              />
-              <div className="track-info">
-                <h3>{track.name}</h3>
-                <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
-                <button onClick={() => onSelectTrack(track)}>Select</button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No results to display yet.</p>
-      )}
-    </div>
-  );
-}
-
-// Component to display track details
-function TrackDetails({ track, details }) {
-  return (
-    <div className="track-details">
-      <h2>{track.name}</h2>
-      <p>Artist(s): {track.artists.map((artist) => artist.name).join(', ')}</p>
-      <p>Album: {track.album.name}</p>
-      {/* Display audio features */}
-      <h3>Audio Features</h3>
-      <ul className="features-list">
-        <li>
-          <strong>Danceability:</strong> {details.features.danceability}
-        </li>
-        <li>
-          <strong>Energy:</strong> {details.features.energy}
-        </li>
-        <li>
-          <strong>Key:</strong> {details.features.key}
-        </li>
-        <li>
-          <strong>Tempo:</strong> {details.features.tempo}
-        </li>
-        {/* Add more features as desired */}
-      </ul>
-      {/* You can also display audio analysis or visualize it */}
-    </div>
-  );
-}
+import TrackList from './TrackList';
+import TrackDetails from './TrackDetails';
 
 function SpotiFindProject() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -114,6 +59,11 @@ function SpotiFindProject() {
     }
   };
 
+  const handleBackToResults = () => {
+    setSelectedTrack(null);
+    setTrackDetails(null);
+  };
+
   return (
     <div className="spotifind-wrapper">
       <div className="spotifind-info">
@@ -139,7 +89,11 @@ function SpotiFindProject() {
           <TrackList tracks={results} onSelectTrack={handleSelectTrack} />
         )}
         {selectedTrack && trackDetails && (
-          <TrackDetails track={selectedTrack} details={trackDetails} />
+          <TrackDetails
+            track={selectedTrack}
+            details={trackDetails}
+            onBack={handleBackToResults}
+          />
         )}
       </div>
     </div>

@@ -1,0 +1,57 @@
+.results-container {
+    margin-top: 30px;
+  }
+  
+  /* Styling for the results list */
+  .results-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Individual track item styling */
+  .track-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  /* Album art styling */
+  .album-art {
+    width: 64px;
+    height: 64px;
+    margin-right: 20px;
+  }
+  
+  /* Track info styling */
+  .track-info {
+    flex-grow: 1;
+    text-align: left;
+  }
+  
+  .track-info h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .track-info p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  /* Select button styling */
+  .track-info button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .track-info button:hover {
+    background-color: #1ed760;
+  }
+  
