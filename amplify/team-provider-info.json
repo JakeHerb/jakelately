@@ -39,7 +39,7 @@
       "function": {
         "spotifyFunction": {
           "deploymentBucketName": "amplify-jakelately-main-82b3f-deployment",
-          "s3Key": "amplify-builds/spotifyFunction-2f343535776347797463-build.zip",
+          "s3Key": "amplify-builds/spotifyFunction-4e7751434f564638764b-build.zip",
           "spotifyClientSecret": "c62b8322ab9d498fae78b2b7813560c0",
           "spotifyClientId": "c673790b8d7d402ab1407e102c91a4bd"
         }

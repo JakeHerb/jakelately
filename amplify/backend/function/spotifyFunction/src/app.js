@@ -1,82 +1,102 @@
 const axios = require('axios');
 
-let cachedAccessToken = null;
-let tokenExpiryTime = 0;
-
-async function getSpotifyAccessToken() {
-    if (cachedAccessToken && Date.now() < tokenExpiryTime) {
-        console.log('Using cached token');
-        return cachedAccessToken;
-    }
-    console.log('Fetching new token');
-    const tokenResponse = await axios.post(
-        'https://accounts.spotify.com/api/token',
-        new URLSearchParams({ grant_type: 'client_credentials' }),
-        {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': `Basic ${Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64')}`
-            }
-        }
-    );
-    if (tokenResponse.status === 200) {
-        cachedAccessToken = tokenResponse.data.access_token;
-        tokenExpiryTime = Date.now() + tokenResponse.data.expires_in * 1000; // expires_in is in seconds
-        return cachedAccessToken;
-    } else {
-        throw new Error('Failed to obtain access token');
-    }
-}
-
 exports.handler = async (event) => {
-    console.log('Received event:', JSON.stringify(event, null, 2));
+  const queryParams = event.queryStringParameters || {};
+  const path = event.path || '';
 
-    const searchQuery = event.queryStringParameters?.q;
+  // Function to get Spotify access token
+  async function getAccessToken() {
+    const clientId = process.env.SPOTIFY_CLIENT_ID;
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+    const token = Buffer.from(`${clientId}:${clientSecret}`, 'utf8').toString('base64');
 
-    if (!searchQuery) {
-        console.log('Missing search query');
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ error: 'Missing search query parameter' }),
-        };
+    const response = await axios({
+      method: 'post',
+      url: 'https://accounts.spotify.com/api/token',
+      data: 'grant_type=client_credentials',
+      headers: {
+        Authorization: `Basic ${token}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+
+    return response.data.access_token;
+  }
+
+  try {
+    const accessToken = await getAccessToken();
+
+    if (path.endsWith('/search')) {
+      // Handle search request
+      const query = queryParams.q;
+      const response = await axios.get('https://api.spotify.com/v1/search', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        params: {
+          q: query,
+          type: 'track',
+          limit: 10,
+        },
+      });
+
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(response.data),
+      };
+    } else if (path.endsWith('/track')) {
+      // Handle track details request
+      const trackId = queryParams.id;
+
+      // Fetch audio features and audio analysis in parallel
+      const [featuresResponse, analysisResponse] = await Promise.all([
+        axios.get(`https://api.spotify.com/v1/audio-features/${trackId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }),
+        axios.get(`https://api.spotify.com/v1/audio-analysis/${trackId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }),
+      ]);
+
+      const data = {
+        features: featuresResponse.data,
+        analysis: analysisResponse.data,
+      };
+
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      };
+    } else {
+      // Invalid path
+      return {
+        statusCode: 400,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({ message: 'Invalid endpoint' }),
+      };
     }
-
-    try {
-        console.log('Start getting Spotify token:', new Date().toISOString());
-        const accessToken = await getSpotifyAccessToken();
-        console.log('Token obtained:', new Date().toISOString());
-
-        console.log('Start searching Spotify:', new Date().toISOString());
-        const response = await axios.get('https://api.spotify.com/v1/search', {
-            headers: {
-                'Authorization': `Bearer ${accessToken}`
-            },
-            params: {
-                q: searchQuery,
-                type: 'track',
-                limit: 10
-            }
-        });
-        console.log('Search completed:', new Date().toISOString());
-
-        return {
-            statusCode: 200,
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(response.data)
-        };
-    } catch (error) {
-        console.error('Error during Spotify request:', error.message);
-        console.error('Error details:', error.response?.data || error);
-
-        return {
-            statusCode: 500,
-            body: JSON.stringify({
-                error: 'Failed to fetch data from Spotify',
-                details: error.message
-            }),
-        };
-    }
+  } catch (error) {
+    console.error('Error:', error);
+    return {
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({ message: 'Internal server error' }),
+    };
+  }
 };

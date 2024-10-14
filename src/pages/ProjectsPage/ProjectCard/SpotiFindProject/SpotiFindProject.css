@@ -1,47 +1,129 @@
 /* Container for the entire component */
 .spotifind-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  /* Styling for the main content area */
-  .spotifind-info {
-    text-align: center;
-    max-width: 600px;
-    width: 100%;
-  }
-  
-  /* Search container styling */
-  .search-container {
-    margin-top: 20px;
-  }
-  
-  /* Styling for the search input field */
-  .search-input {
-    width: 70%;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  /* Styling for the search button */
-  .search-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #1DB954; /* Spotify green color */
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Optional: Add some hover effects */
-  .search-button:hover {
-    background-color: #1ed760;
-  }
-  
-  /* Results container styling */
-  .results-container {
-    margin-top: 30px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+/* Styling for the main content area */
+.spotifind-info {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Search container styling */
+.search-container {
+  margin-top: 20px;
+}
+
+/* Styling for the search input field */
+.search-input {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Styling for the search button */
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #1db954; /* Spotify green color */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Optional: Add some hover effects */
+.search-button:hover {
+  background-color: #1ed760;
+}
+
+/* Results container styling */
+.results-container {
+  margin-top: 30px;
+}
+
+/* Styling for the results list */
+.results-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual track item styling */
+.track-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Album art styling */
+.album-art {
+  width: 64px;
+  height: 64px;
+  margin-right: 20px;
+}
+
+/* Track info styling */
+.track-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.track-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.track-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Select button styling */
+.track-info button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #1db954;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.track-info button:hover {
+  background-color: #1ed760;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  margin-top: 20px;
+}
+
+/* Track details styling */
+.track-details {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.track-details h2 {
+  font-size: 24px;
+}
+
+.track-details p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.features-list li {
+  margin: 5px 0;
+}
