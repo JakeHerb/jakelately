@@ -1,108 +1,82 @@
-const express = require('express');
-const bodyParser = require('body-parser');
 const axios = require('axios');
-const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
-const qs = require('querystring');
 
-// Express App
-const app = express();
-app.use(bodyParser.json());
-app.use(awsServerlessExpressMiddleware.eventContext());
+let cachedAccessToken = null;
+let tokenExpiryTime = 0;
 
-// Enable CORS
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*'); // Adjust the origin as needed
-  res.header('Access-Control-Allow-Headers', '*');
-  next();
-});
-
-// Spotify Credentials from Environment Variables
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-
-let accessToken = null;
-let tokenExpiresAt = null;
-
-// Function to get access token
-async function getAccessToken() {
-  const tokenUrl = 'https://accounts.spotify.com/api/token';
-  const data = qs.stringify({ grant_type: 'client_credentials' });
-  const authHeader = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
-
-  const response = await axios.post(tokenUrl, data, {
-    headers: {
-      'Authorization': `Basic ${authHeader}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  });
-
-  accessToken = response.data.access_token;
-  tokenExpiresAt = Date.now() + response.data.expires_in * 1000;
-}
-
-// Middleware to ensure access token is valid
-async function ensureAccessToken(req, res, next) {
-  if (!accessToken || Date.now() >= tokenExpiresAt) {
-    try {
-      await getAccessToken();
-    } catch (error) {
-      console.error('Error obtaining access token:', error);
-      return res.status(500).json({ error: 'Failed to obtain access token' });
+async function getSpotifyAccessToken() {
+    if (cachedAccessToken && Date.now() < tokenExpiryTime) {
+        console.log('Using cached token');
+        return cachedAccessToken;
     }
-  }
-  next();
+    console.log('Fetching new token');
+    const tokenResponse = await axios.post(
+        'https://accounts.spotify.com/api/token',
+        new URLSearchParams({ grant_type: 'client_credentials' }),
+        {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': `Basic ${Buffer.from(`${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`).toString('base64')}`
+            }
+        }
+    );
+    if (tokenResponse.status === 200) {
+        cachedAccessToken = tokenResponse.data.access_token;
+        tokenExpiryTime = Date.now() + tokenResponse.data.expires_in * 1000; // expires_in is in seconds
+        return cachedAccessToken;
+    } else {
+        throw new Error('Failed to obtain access token');
+    }
 }
 
-// Routes
-app.get('/search', ensureAccessToken, async (req, res) => {
-  const query = req.query.q;
-  if (!query) {
-    return res.status(400).json({ error: 'Missing query parameter "q"' });
-  }
+exports.handler = async (event) => {
+    console.log('Received event:', JSON.stringify(event, null, 2));
 
-  try {
-    const response = await axios.get('https://api.spotify.com/v1/search', {
-      headers: { 'Authorization': `Bearer ${accessToken}` },
-      params: {
-        q: query,
-        type: 'track',
-        limit: 10,
-      },
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error searching tracks:', error.response.data);
-    res.status(error.response.status).json(error.response.data);
-  }
-});
+    const searchQuery = event.queryStringParameters?.q;
 
-app.get('/audio-analysis/:id', ensureAccessToken, async (req, res) => {
-  const trackId = req.params.id;
+    if (!searchQuery) {
+        console.log('Missing search query');
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ error: 'Missing search query parameter' }),
+        };
+    }
 
-  try {
-    const response = await axios.get(`https://api.spotify.com/v1/audio-analysis/${trackId}`, {
-      headers: { 'Authorization': `Bearer ${accessToken}` },
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error getting audio analysis:', error.response.data);
-    res.status(error.response.status).json(error.response.data);
-  }
-});
+    try {
+        console.log('Start getting Spotify token:', new Date().toISOString());
+        const accessToken = await getSpotifyAccessToken();
+        console.log('Token obtained:', new Date().toISOString());
 
-app.get('/audio-features/:id', ensureAccessToken, async (req, res) => {
-  const trackId = req.params.id;
+        console.log('Start searching Spotify:', new Date().toISOString());
+        const response = await axios.get('https://api.spotify.com/v1/search', {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            },
+            params: {
+                q: searchQuery,
+                type: 'track',
+                limit: 10
+            }
+        });
+        console.log('Search completed:', new Date().toISOString());
 
-  try {
-    const response = await axios.get(`https://api.spotify.com/v1/audio-features/${trackId}`, {
-      headers: { 'Authorization': `Bearer ${accessToken}` },
-    });
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error getting audio features:', error.response.data);
-    res.status(error.response.status).json(error.response.data);
-  }
-});
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(response.data)
+        };
+    } catch (error) {
+        console.error('Error during Spotify request:', error.message);
+        console.error('Error details:', error.response?.data || error);
 
-// Export the app object for the Lambda handler
-module.exports = app;
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                error: 'Failed to fetch data from Spotify',
+                details: error.message
+            }),
+        };
+    }
+};

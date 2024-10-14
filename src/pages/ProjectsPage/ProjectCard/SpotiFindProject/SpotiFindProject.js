@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SpotiFindProject.css';
-import awsconfig from '../../../../aws-exports.js';
 
 function SpotiFindProject() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,7 +10,7 @@ function SpotiFindProject() {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const API_BASE_URL = awsconfig?.aws_cloud_logic_custom?.[0]?.endpoint || '';
+  const API_BASE_URL = 'https://hpim4w4bxk.execute-api.us-west-2.amazonaws.com/main';
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +25,7 @@ function SpotiFindProject() {
       const response = await axios.get(`${API_BASE_URL}/search`, {
         params: { q: searchQuery },
       });
+      console.log(response);
       if (response.data?.tracks?.items) {
         setResults(response.data.tracks.items);
       } else {

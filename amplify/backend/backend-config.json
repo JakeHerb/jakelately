@@ -38,6 +38,22 @@
           "resourceName": "spotifyFunction"
         }
       ]
+    },
+    "AMPLIFY_function_spotifyFunction_spotifyClientId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "spotifyFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_spotifyFunction_spotifyClientSecret": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "spotifyFunction"
+        }
+      ]
     }
   }
 }
