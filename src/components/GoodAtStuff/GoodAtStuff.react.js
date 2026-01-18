@@ -28,7 +28,7 @@ function GoodAtStuff() {
             <span className="jake-about">Jake </span>
             <span className="lately-about">Lately</span>
           </div>
-          <h1 className="about-subtitle">Building the Future of AI</h1>
+          <h1 className="about-subtitle">What I Do</h1>
         </header>
 
         <div ref={containerRef} className="info-sections">
@@ -51,13 +51,13 @@ function GoodAtStuff() {
             <div className="card-accent"></div>
             <h2 className="card-title">
               <span className="card-icon">&gt;</span>
-              Impact at Scale
+              Creative Tech
             </h2>
             <p className="card-text">
-              Technical enabler for flagship AI activations across UFC, F1,
-              and high-profile brand campaigns. Bridges the gap between
+              Technical enabler for AI activations across UFC, F1,
+              and brand campaigns. Bridges the gap between
               research and production, turning experimental prototypes into{' '}
-              <span className="highlight-teal">experiences that reach millions</span>.
+              <span className="highlight-teal">real-world experiences</span>.
               Runs internal knowledge sharing programs to help engineers build with AI.
             </p>
           </article>

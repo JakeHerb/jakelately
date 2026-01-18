@@ -33,7 +33,7 @@ function Hero() {
 
         <div className="hero-tagline-wrapper">
           <p className="hero-tagline">
-            Senior AI Engineer building tools that reach billions.
+            GenAI Engineer at Meta. Seattle, WA.
           </p>
         </div>
 

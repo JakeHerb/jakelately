@@ -5,6 +5,8 @@
   min-height: 100vh;
   background: linear-gradient(180deg, #011329 0%, #02203d 50%, #011329 100%);
   padding: var(--space-8) 0;
+  padding-top: 80px; /* Account for sticky header */
+  overflow-x: hidden;
 }
 
 .component-showcase__content {
@@ -94,7 +96,7 @@
 /* ===== Component Grid ===== */
 .component-showcase__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
   gap: var(--space-5);
   margin-bottom: var(--space-8);
 }

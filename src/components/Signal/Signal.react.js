@@ -6,10 +6,10 @@ function Signal() {
   const { ref, className } = useScrollAnimation({ threshold: 0.2 });
 
   const signals = [
-    { prefix: 'location', value: 'San Francisco, CA' },
+    { prefix: 'location', value: 'Seattle, WA' },
     { prefix: 'role', value: 'Senior AI Engineer @ Meta' },
     { prefix: 'focus', value: 'Generative AI, Creative Tools, Infrastructure' },
-    { prefix: 'building', value: 'AI experiences that scale to millions' },
+    { prefix: 'building', value: 'AI-powered creative experiences' },
     { prefix: 'status', value: 'Open to interesting conversations', highlight: true },
   ];
 

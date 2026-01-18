@@ -3,14 +3,15 @@
 
 // Import thumbnails
 import marsRover from '../pages/ProjectsPage/marsRover.jpg';
+import componentShowcaseThumbnail from '../pages/ProjectsPage/componentShowcase.svg';
 
 export const projects = [
   {
     id: 'component-showcase',
     title: 'Component Showcase',
-    tagline: 'Three themed UI component libraries',
-    description: 'A showcase of 17 UI components across three design themes: semantic primitives, utilitarian minimalism, and avant-garde expression.',
-    thumbnail: null,
+    tagline: 'Seven themed UI component libraries',
+    description: 'A showcase of 17 UI components across seven design themes: from boring documentation to flamboyant expression.',
+    thumbnail: componentShowcaseThumbnail,
     category: 'web',
     tags: ['React', 'UI/UX', 'Components'],
     featured: true,

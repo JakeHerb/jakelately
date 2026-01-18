@@ -4,9 +4,8 @@ import { useScrollAnimation, useScrollAnimationGroup } from '../../hooks/useScro
 import './FeaturedWork.css';
 
 // Import thumbnails
-import backdropThumbnail from '../../pages/ProjectsPage/BackdropStory.jpg';
-import cornellBox from '../../pages/ProjectsPage/cornellBox.png';
-import astronautImage from '../../pages/ProjectsPage/dunkinAstronaut.png';
+import componentShowcaseThumbnail from '../../pages/ProjectsPage/componentShowcase.svg';
+import marsRover from '../../pages/ProjectsPage/marsRover.jpg';
 
 function FeaturedWork() {
   const { ref: headerRef, className: headerClass } = useScrollAnimation({ threshold: 0.3 });
@@ -14,28 +13,28 @@ function FeaturedWork() {
 
   const featuredProjects = [
     {
-      id: 'instagram-ai',
-      title: 'Instagram AI Features',
-      description: 'Generative AI image editing for Instagram',
-      thumbnail: backdropThumbnail,
-      link: '/projects/instagram-ai',
-      tags: ['AI/ML', 'Product'],
+      id: 'component-showcase',
+      title: 'Component Showcase',
+      description: '7 themed UI component libraries with 17 components each',
+      thumbnail: componentShowcaseThumbnail,
+      link: '/projects/component-showcase',
+      tags: ['React', 'UI/UX'],
     },
     {
-      id: 'ThreeJS',
-      title: 'Learning ThreeJS',
-      description: 'Interactive 3D graphics experiments',
-      thumbnail: astronautImage,
-      link: '/projects/ThreeJS',
-      tags: ['3D', 'WebGL'],
+      id: '3d-design',
+      title: 'Dimensional Gateway',
+      description: '4D geometry visualization in the browser',
+      thumbnail: marsRover,
+      link: '/projects/3D',
+      tags: ['ThreeJS', 'WebGL'],
     },
     {
-      id: 'SpotiFind',
-      title: 'SpotiFind',
-      description: 'Spotify API visualization tool',
-      thumbnail: cornellBox,
-      link: '/projects/SpotiFind',
-      tags: ['React', 'API'],
+      id: 'f1-trackside',
+      title: 'F1 Trackside AI',
+      description: 'Real-time AI at the Las Vegas Grand Prix',
+      thumbnail: null,
+      link: '/projects/f1-trackside',
+      tags: ['AI/ML', 'Live Event'],
     },
   ];
 
@@ -56,7 +55,13 @@ function FeaturedWork() {
               {...getItemProps(index)}
             >
               <div className="featured-card-image">
-                <img src={project.thumbnail} alt={project.title} />
+                {project.thumbnail ? (
+                  <img src={project.thumbnail} alt={project.title} />
+                ) : (
+                  <div className="featured-card-placeholder">
+                    <span>{project.tags[0]}</span>
+                  </div>
+                )}
                 <div className="featured-card-overlay"></div>
               </div>
               <div className="featured-card-content">

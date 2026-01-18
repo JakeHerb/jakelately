@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Header from './components/Header/Header.react';
 import Hero from './components/Hero/Hero.react';
 import Signal from './components/Signal/Signal.react';
@@ -24,6 +25,7 @@ import BlogPost from './pages/BlogPost/BlogPost.react';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="app">
         <Header />
         <Routes>

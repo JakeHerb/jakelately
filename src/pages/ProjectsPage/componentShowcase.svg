@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#011329"/>
+      <stop offset="100%" style="stop-color:#02203d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+
+  <!-- Grid of themed component squares -->
+  <!-- Row 1 - Boring (gray), Utilitarian (dark), Brutalist (black/white) -->
+  <rect x="20" y="20" width="80" height="60" rx="4" fill="#f0f0f0" stroke="#ddd"/>
+  <rect x="110" y="20" width="80" height="60" rx="4" fill="#1a1a1a" stroke="#333"/>
+  <rect x="200" y="20" width="80" height="60" fill="#000" stroke="#fff" stroke-width="3"/>
+  <rect x="290" y="20" width="90" height="60" rx="4" fill="#0a0a0a" stroke="#00ffff" stroke-width="1"/>
+
+  <!-- Row 2 - Cyber (neon), Organic (green), Whimsical (purple) -->
+  <rect x="20" y="100" width="80" height="60" rx="12" fill="#2d3a2d" stroke="#7a9a7a"/>
+  <rect x="110" y="100" width="80" height="60" rx="16" fill="#2d1a4a" stroke="#c4a0ff" stroke-dasharray="4,2"/>
+  <rect x="200" y="100" width="80" height="60" rx="4" fill="#1a0a1f" stroke="#d4af37"/>
+  <rect x="290" y="100" width="90" height="60" rx="8" fill="#011329" stroke="#ffaf00"/>
+
+  <!-- Row 3 - Mixed accent colors -->
+  <rect x="20" y="180" width="115" height="50" rx="6" fill="#011329" stroke="#3c7f72"/>
+  <rect x="145" y="180" width="115" height="50" rx="6" fill="#011329" stroke="#ff00ff" stroke-opacity="0.5"/>
+  <rect x="270" y="180" width="110" height="50" rx="6" fill="#011329" stroke="#ffaf00" stroke-opacity="0.5"/>
+
+  <!-- Title text area -->
+  <rect x="20" y="250" width="360" height="30" rx="4" fill="rgba(0,0,0,0.3)"/>
+  <text x="200" y="270" font-family="monospace" font-size="12" fill="#f5efe6" text-anchor="middle">7 THEMES  -  17 COMPONENTS</text>
+</svg>
