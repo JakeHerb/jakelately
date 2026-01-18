@@ -1,94 +1,91 @@
-import React, { useState } from 'react';
-import './ProjectsPage.css'; 
-import marsRoverPic from './marsRover.jpg';
-import backdropThumbnail from './BackdropStory.jpg';
-import astronautImage from './dunkinAstronaut.png';
-import cornellBox from './cornellBox.png';
+import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+import { useScrollAnimation, useScrollAnimationGroup } from '../../hooks/useScrollAnimation';
+import { categories, getFeaturedProjects, getProjectsByCategory } from '../../data/projects';
+import ProjectCard from '../../components/ProjectCard/ProjectCard.react';
+import ProjectFilters from '../../components/ProjectFilters/ProjectFilters.react';
+import FeaturedProject from '../../components/FeaturedProject/FeaturedProject.react';
 import MinimalistBackground from './MinimalistBackground.react';
-const projectData = [
-  {
-    id: "Spotify",
-    title: 'SpotiFind',
-    thumbnail: cornellBox,
-    description: "Web App to request and display information about music from the Spotify Developer API.",
-    link: '/projects/SpotiFind'
-  },
-  {
-    id: "Backdrop",
-    title: 'Instagram: Backdrop',
-    thumbnail: backdropThumbnail,
-    description: "Building Instagram's first image editing feature that uses Generative A.I.",
-    link: '/projects/Backdrop'
-  },
-  {
-    id: "ThreeJS",
-    title: 'Learning ThreeJS',
-    thumbnail: astronautImage,
-    description: "Interactive history of learning 3D development with the graphics library ThreeJS.",
-    link: '/projects/ThreeJS'
-  },
-  {
-    id: "3D",
-    title: '3D Design',
-    thumbnail: cornellBox,
-    description: "This is just where I play around with 3D Web Design.",
-    link: '/projects/3D'
-  }
-];
+import './ProjectsPage.css';
 
 function ProjectsPage() {
-  const [flippedCard, setFlippedCard] = useState(null); // Track the flipped card
+  const [activeCategory, setActiveCategory] = useState('all');
+  const { ref: headerRef, className: headerClass } = useScrollAnimation({ threshold: 0.2 });
+  const { containerRef, getItemProps } = useScrollAnimationGroup({ staggerDelay: 0.1 });
 
-  const handleFlip = (cardId) => {
-    setFlippedCard(prevCard => (prevCard === cardId ? null : cardId)); // Flip only one card at a time
-  };
+  // Get featured project (first one marked as featured)
+  const featuredProject = getFeaturedProjects()[0];
+
+  // Filter projects based on active category, excluding featured
+  const filteredProjects = useMemo(() => {
+    const categoryProjects = getProjectsByCategory(activeCategory);
+    // Exclude featured project from the grid if showing all
+    if (featuredProject && activeCategory === 'all') {
+      return categoryProjects.filter(p => p.id !== featuredProject.id);
+    }
+    return categoryProjects;
+  }, [activeCategory, featuredProject]);
 
   return (
     <div className="projects-page">
-      {/* The new minimalist background */}
-      <MinimalistBackground /> 
+      {/* 3D Background */}
+      <MinimalistBackground />
 
-      <div className="projects-title">
-        <h1>PROJECTS</h1>
-      </div>
+      {/* Star field overlay */}
+      <div className="star-field"></div>
 
-      <div className="projects-container">
-        {projectData.map((project) => (
-          <FlippableCard 
-            key={project.id} 
-            project={project} 
-            isFlipped={flippedCard === project.id} 
-            onFlip={() => handleFlip(project.id)} 
+      <div className="projects-content">
+        {/* Header */}
+        <header ref={headerRef} className={`projects-header ${headerClass}`}>
+          <span className="projects-label">{'>'} selected_work</span>
+          <h1 className="projects-title">Projects</h1>
+          <p className="projects-subtitle">
+            Things I've built that I'm proud of. From AI tools to creative experiments.
+          </p>
+        </header>
+
+        {/* Filters */}
+        <div className="projects-filters-wrapper">
+          <ProjectFilters
+            categories={categories}
+            activeCategory={activeCategory}
+            onFilterChange={setActiveCategory}
           />
-        ))}
-      </div>
-    </div>
-  );
-}
+        </div>
 
-function FlippableCard({ project, isFlipped, onFlip }) {
-  return (
-    <div
-      className={`project-card ${isFlipped ? 'flipped' : ''}`}
-      onClick={onFlip} // Flip the card only on click
-    >
-      <div className="card-inner">
-        {/* Front of the card */}
-        <div className="card-face card-front">
-          <img src={project.thumbnail} alt={project.title} className="project-thumbnail" />
-          <div className="project-info">
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
+        {/* Featured Project - only show when viewing all */}
+        {activeCategory === 'all' && featuredProject && (
+          <FeaturedProject project={featuredProject} />
+        )}
+
+        {/* Project Grid */}
+        <div ref={containerRef} className="projects-grid">
+          {filteredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              {...getItemProps(index)}
+            />
+          ))}
+        </div>
+
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="projects-empty">
+            <span className="projects-empty-icon">::</span>
+            <p>No projects in this category yet.</p>
           </div>
-        </div>
+        )}
 
-        {/* Back of the card */}
-        <div className="card-face card-back">
-          <h3>{project.title}</h3>
-          <div className="divider"></div>
-          <p>{project.description}</p>
-          <a href={project.link}>Check it out</a>
-        </div>
+        {/* CTA Section */}
+        <footer className="projects-cta">
+          <div className="projects-cta-line"></div>
+          <p className="projects-cta-text">Have a project idea?</p>
+          <Link to="/contact" className="projects-cta-button">
+            <span className="projects-cta-icon">{'~'}</span>
+            Let's Talk
+          </Link>
+        </footer>
       </div>
     </div>
   );

@@ -1,52 +1,54 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header.react';
-import GoodAtStuff from './components/GoodAtStuff/GoodAtStuff.react';
+import Hero from './components/Hero/Hero.react';
+import Signal from './components/Signal/Signal.react';
+import Stack from './components/Stack/Stack.react';
+import FeaturedWork from './components/FeaturedWork/FeaturedWork.react';
+import LatestPosts from './components/LatestPosts/LatestPosts.react';
+import CallToAction from './components/CallToAction/CallToAction.react';
+import Footer from './components/Footer/Footer.react';
 import About from './pages/About/About.react';
 import ProjectsPage from './pages/ProjectsPage/ProjectsPage.react';
 import Contact from './pages/Contact/Contact.react';
-import Hero from './components/Hero/Hero.react';
-import Footer from './components/Footer/Footer.react';
 import ProjectDetail from './pages/ProjectsPage/ProjectDetail.react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
-
-// import OpenAI from 'openai';
-import ThreeJSProject from './pages/ProjectsPage/ProjectCard/ThreeJSProject/ThreeJSProject.react';
-import SpotiFindProject from './pages/ProjectsPage/ProjectCard/SpotiFindProject/SpotiFindProject';
-
-
-// const openai = new OpenAI({
-//   apiKey: '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',
-//   dangerouslyAllowBrowser: true,
-// });
-
-
-// async function chatGPT() {
-//   const completion = await openai.chat.completions.create({
-//     messages: [{ role: "system", content: "You are a helpful assistant. Please write me a song" }],
-//     model: "gpt-3.5-turbo",
-//   });
-
-//   console.log(completion);
-// }
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import TesseractPlayground from './pages/ProjectsPage/TesseractPlayground/TesseractPlayground.react';
+import ActivationDetail from './pages/ProjectsPage/ActivationDetail/ActivationDetail.react';
+import ComponentShowcase from './pages/ComponentShowcase/ComponentShowcase.react';
+import NowPage from './pages/NowPage/NowPage.react';
+import UsesPage from './pages/UsesPage/UsesPage.react';
+import BlogPage from './pages/BlogPage/BlogPage.react';
+import BlogPost from './pages/BlogPost/BlogPost.react';
 
 function App() {
   return (
     <Router>
       <div className="app">
         <Header />
-        <Routes> {/* Use Routes here */}
+        <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/ThreeJS" element={<ThreeJSProject />} /> 
-          <Route path="/projects/SpotiFind" element={<SpotiFindProject />} /> 
-          <Route path="/projects/:projectId" element={<ProjectDetail />} /> 
+          <Route path="/projects/component-showcase" element={<ComponentShowcase />} />
+          <Route path="/projects/3D" element={<TesseractPlayground />} />
+          <Route path="/projects/f1-trackside" element={<ActivationDetail />} />
+          <Route path="/projects/ufc-barbershop" element={<ActivationDetail />} />
+          <Route path="/projects/:projectId" element={<ProjectDetail />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/" element={<>
-            <Hero />
-            <GoodAtStuff />
-            {/* Include any other components that make up your main landing page */}
-          </>} />
+          <Route path="/now" element={<NowPage />} />
+          <Route path="/uses" element={<UsesPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:postId" element={<BlogPost />} />
+          <Route path="/" element={
+            <>
+              <Hero />
+              <Signal />
+              <Stack />
+              <FeaturedWork />
+              <LatestPosts />
+              <CallToAction />
+            </>
+          } />
         </Routes>
         <Footer />
       </div>

@@ -1,0 +1,90 @@
+:root {
+  /* Colors */
+  --color-navy: #011329;
+  --color-navy-dark: #000a18;
+  --color-navy-light: #0a2440;
+  --color-golden: #ffaf00;
+  --color-golden-light: #ffc333;
+  --color-golden-dark: #cc8c00;
+  --color-teal: #3c7f72;
+  --color-teal-light: #4a9d8c;
+  --color-teal-dark: #2d5f55;
+  --color-cream: #f4ddb5;
+  --color-cream-light: #f8e9d0;
+  --color-cream-dark: #e6c78f;
+  --color-coral: #d34a24;
+  --color-hotpink: #ff0266;
+  --color-gold-hover: #ffd700;
+
+  /* Spotify (for SpotiFind project) */
+  --color-spotify-green: #1db954;
+  --color-spotify-green-light: #1ed760;
+
+  /* Fonts */
+  --font-body: 'Livvic', sans-serif;
+  --font-heading: 'Chakra Petch', sans-serif;
+  --font-pixel: 'Press Start 2P', system-ui;
+  --font-script: 'Yellowtail', cursive;
+
+  /* Breakpoints (for reference in comments) */
+  /* --bp-sm: 480px */
+  /* --bp-md: 768px */
+  /* --bp-lg: 1024px */
+  /* --bp-xl: 1280px */
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  /* Shadows */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-header: 0 3px 10px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-full: 50%;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s ease;
+  --transition-slow: 0.8s ease;
+
+  /* Animation timing functions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Gradients */
+  --gradient-space: linear-gradient(180deg, #011329 0%, #012040 40%, #0a2d4d 70%, #011329 100%);
+  --gradient-golden-glow: radial-gradient(circle, rgba(255, 175, 0, 0.15) 0%, rgba(60, 127, 114, 0.1) 40%, transparent 70%);
+  --gradient-card: linear-gradient(135deg, rgba(255, 175, 0, 0.08) 0%, rgba(60, 127, 114, 0.05) 100%);
+  --gradient-card-hover: linear-gradient(135deg, rgba(255, 175, 0, 0.15) 0%, rgba(60, 127, 114, 0.1) 100%);
+  --gradient-synthwave: linear-gradient(180deg, #ff0266 0%, #ffaf00 50%, #3c7f72 100%);
+  --gradient-footer: linear-gradient(180deg, transparent 0%, #011329 100%);
+
+  /* Glow effects */
+  --glow-golden: 0 0 20px rgba(255, 175, 0, 0.3);
+  --glow-golden-strong: 0 0 30px rgba(255, 175, 0, 0.5);
+  --glow-teal: 0 0 20px rgba(60, 127, 114, 0.3);
+  --glow-text-golden: 0 0 10px rgba(255, 175, 0, 0.5), 0 0 20px rgba(255, 175, 0, 0.3);
+
+  /* Glass effect */
+  --glass-bg: rgba(1, 19, 41, 0.7);
+  --glass-border: rgba(255, 175, 0, 0.15);
+  --glass-blur: blur(12px);
+
+  /* Z-index scale */
+  --z-base: 1;
+  --z-overlay: 100;
+  --z-modal: 500;
+  --z-header: 1000;
+  --z-tooltip: 1500;
+}

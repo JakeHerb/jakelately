@@ -1,0 +1,457 @@
+/* ===== Theme Tabs ===== */
+
+.theme-tabs {
+  margin-bottom: var(--space-6);
+}
+
+.theme-tabs__label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-teal, #3c7f72);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+.theme-tabs__buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.theme-tabs__button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 175, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.theme-tabs__button:hover {
+  border-color: rgba(255, 175, 0, 0.3);
+  background: rgba(255, 175, 0, 0.05);
+}
+
+.theme-tabs__button--active {
+  border-color: var(--color-golden, #ffaf00);
+  background: rgba(255, 175, 0, 0.1);
+}
+
+.theme-tabs__icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: rgba(245, 239, 230, 0.5);
+  transition: color 0.3s ease;
+}
+
+.theme-tabs__button--active .theme-tabs__icon {
+  color: var(--color-golden, #ffaf00);
+}
+
+.theme-tabs__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.theme-tabs__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-cream, #f5efe6);
+  transition: color 0.3s ease;
+}
+
+.theme-tabs__button--active .theme-tabs__name {
+  color: var(--color-golden, #ffaf00);
+}
+
+.theme-tabs__subtitle {
+  font-size: 0.75rem;
+  color: rgba(245, 239, 230, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Theme Variations ===== */
+
+/* Boring - Plain and simple */
+.showcase-boring .theme-tabs__label {
+  color: #666;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.showcase-boring .theme-tabs__button {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.showcase-boring .theme-tabs__button:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.showcase-boring .theme-tabs__button--active {
+  background: #333;
+  border-color: #333;
+}
+
+.showcase-boring .theme-tabs__icon {
+  color: #999;
+}
+
+.showcase-boring .theme-tabs__button--active .theme-tabs__icon {
+  color: #fff;
+}
+
+.showcase-boring .theme-tabs__name {
+  color: #333;
+}
+
+.showcase-boring .theme-tabs__button--active .theme-tabs__name {
+  color: #fff;
+}
+
+.showcase-boring .theme-tabs__subtitle {
+  color: #888;
+}
+
+.showcase-boring .theme-tabs__button--active .theme-tabs__subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Utilitarian - Clean dark */
+.showcase-utilitarian .theme-tabs__label {
+  color: #888;
+}
+
+.showcase-utilitarian .theme-tabs__button {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+.showcase-utilitarian .theme-tabs__button:hover {
+  background: #222;
+  border-color: #444;
+}
+
+.showcase-utilitarian .theme-tabs__button--active {
+  background: #0a0a0a;
+  border-color: #fff;
+}
+
+.showcase-utilitarian .theme-tabs__icon {
+  color: #666;
+}
+
+.showcase-utilitarian .theme-tabs__button--active .theme-tabs__icon {
+  color: #fff;
+}
+
+.showcase-utilitarian .theme-tabs__name {
+  color: #e0e0e0;
+}
+
+.showcase-utilitarian .theme-tabs__button--active .theme-tabs__name {
+  color: #fff;
+}
+
+.showcase-utilitarian .theme-tabs__subtitle {
+  color: #666;
+}
+
+/* Brutalist - Stark and bold */
+.showcase-brutalist .theme-tabs__label {
+  color: #fff;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.showcase-brutalist .theme-tabs__button {
+  background: transparent;
+  border: 3px solid #fff;
+  border-radius: 0;
+  padding: var(--space-4) var(--space-5);
+}
+
+.showcase-brutalist .theme-tabs__button:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+.showcase-brutalist .theme-tabs__button:hover .theme-tabs__icon,
+.showcase-brutalist .theme-tabs__button:hover .theme-tabs__name,
+.showcase-brutalist .theme-tabs__button:hover .theme-tabs__subtitle {
+  color: #000;
+}
+
+.showcase-brutalist .theme-tabs__button--active {
+  background: #fff;
+  border-color: #fff;
+}
+
+.showcase-brutalist .theme-tabs__icon {
+  color: #fff;
+  font-weight: 900;
+}
+
+.showcase-brutalist .theme-tabs__button--active .theme-tabs__icon {
+  color: #000;
+}
+
+.showcase-brutalist .theme-tabs__name {
+  color: #fff;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.showcase-brutalist .theme-tabs__button--active .theme-tabs__name {
+  color: #000;
+}
+
+.showcase-brutalist .theme-tabs__subtitle {
+  color: #888;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.showcase-brutalist .theme-tabs__button--active .theme-tabs__subtitle {
+  color: #333;
+}
+
+/* Cyber - Neon glow */
+.showcase-cyber .theme-tabs__label {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.showcase-cyber .theme-tabs__button {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 0;
+}
+
+.showcase-cyber .theme-tabs__button:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.showcase-cyber .theme-tabs__button--active {
+  background: rgba(255, 0, 255, 0.1);
+  border-color: #ff00ff;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+}
+
+.showcase-cyber .theme-tabs__icon {
+  color: #00ffff;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.showcase-cyber .theme-tabs__button--active .theme-tabs__icon {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+.showcase-cyber .theme-tabs__name {
+  color: #e0e0e0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.showcase-cyber .theme-tabs__button--active .theme-tabs__name {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+.showcase-cyber .theme-tabs__subtitle {
+  color: #666;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Organic - Natural and warm */
+.showcase-organic .theme-tabs__label {
+  color: #7a9a7a;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.1em;
+}
+
+.showcase-organic .theme-tabs__button {
+  background: rgba(45, 58, 45, 0.6);
+  border: 1px solid rgba(122, 154, 122, 0.3);
+  border-radius: 20px;
+}
+
+.showcase-organic .theme-tabs__button:hover {
+  background: rgba(122, 154, 122, 0.2);
+  border-color: rgba(122, 154, 122, 0.5);
+}
+
+.showcase-organic .theme-tabs__button--active {
+  background: rgba(122, 154, 122, 0.3);
+  border-color: #7a9a7a;
+}
+
+.showcase-organic .theme-tabs__icon {
+  color: #5a7a5a;
+}
+
+.showcase-organic .theme-tabs__button--active .theme-tabs__icon {
+  color: #a0c4a0;
+}
+
+.showcase-organic .theme-tabs__name {
+  color: #d4e4d4;
+  font-family: 'Georgia', serif;
+}
+
+.showcase-organic .theme-tabs__button--active .theme-tabs__name {
+  color: #fff;
+}
+
+.showcase-organic .theme-tabs__subtitle {
+  color: #7a9a7a;
+  font-family: 'Georgia', serif;
+}
+
+/* Whimsical - Playful and fun */
+.showcase-whimsical .theme-tabs__label {
+  color: #c4a0ff;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+.showcase-whimsical .theme-tabs__button {
+  background: rgba(180, 100, 255, 0.15);
+  border: 2px dashed rgba(180, 100, 255, 0.4);
+  border-radius: 16px;
+  transform: rotate(-1deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.showcase-whimsical .theme-tabs__button:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.showcase-whimsical .theme-tabs__button:hover {
+  background: rgba(255, 180, 200, 0.2);
+  border-color: #ffb4c8;
+  transform: rotate(0deg) scale(1.05);
+}
+
+.showcase-whimsical .theme-tabs__button--active {
+  background: linear-gradient(135deg, rgba(180, 100, 255, 0.3), rgba(255, 180, 200, 0.3));
+  border-style: solid;
+  border-color: #c4a0ff;
+  transform: rotate(0deg) scale(1.02);
+}
+
+.showcase-whimsical .theme-tabs__icon {
+  color: #ff9ecd;
+}
+
+.showcase-whimsical .theme-tabs__button--active .theme-tabs__icon {
+  color: #ffcc00;
+}
+
+.showcase-whimsical .theme-tabs__name {
+  color: #e0d0ff;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+.showcase-whimsical .theme-tabs__button--active .theme-tabs__name {
+  color: #fff;
+}
+
+.showcase-whimsical .theme-tabs__subtitle {
+  color: #a080c0;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+/* Flamboyant - Dramatic and luxe */
+.showcase-flamboyant .theme-tabs__label {
+  color: #d4af37;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+.showcase-flamboyant .theme-tabs__button {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(180, 100, 180, 0.1));
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-flamboyant .theme-tabs__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.showcase-flamboyant .theme-tabs__button:hover::before {
+  left: 100%;
+}
+
+.showcase-flamboyant .theme-tabs__button:hover {
+  border-color: #d4af37;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.showcase-flamboyant .theme-tabs__button--active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(180, 100, 180, 0.15));
+  border-color: #d4af37;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
+
+.showcase-flamboyant .theme-tabs__icon {
+  color: #b08060;
+}
+
+.showcase-flamboyant .theme-tabs__button--active .theme-tabs__icon {
+  color: #d4af37;
+}
+
+.showcase-flamboyant .theme-tabs__name {
+  color: #f0e6d6;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+.showcase-flamboyant .theme-tabs__button--active .theme-tabs__name {
+  color: #d4af37;
+}
+
+.showcase-flamboyant .theme-tabs__subtitle {
+  color: #a08070;
+  font-family: 'Georgia', serif;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .theme-tabs__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .theme-tabs__button {
+    min-width: auto;
+  }
+}

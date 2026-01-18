@@ -1,0 +1,124 @@
+/* ===== Tesseract Playground ===== */
+
+.tesseract-playground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #011329 0%, #02203d 50%, #011329 100%);
+  overflow: hidden;
+  z-index: 9999; /* Overlay everything including header/footer */
+}
+
+/* ===== Canvas ===== */
+.tesseract-playground__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ===== Back Button ===== */
+.tesseract-playground__back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--color-cream, #f5efe6);
+  text-decoration: none;
+  background: rgba(1, 19, 41, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 175, 0, 0.2);
+  border-radius: 8px;
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.tesseract-playground__back:hover {
+  border-color: var(--color-golden, #ffaf00);
+  color: var(--color-golden, #ffaf00);
+}
+
+.tesseract-playground__back-icon {
+  font-weight: bold;
+}
+
+/* ===== Title Overlay ===== */
+.tesseract-playground__title-overlay {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.tesseract-playground__title {
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--color-golden, #ffaf00);
+  margin: 0;
+  text-shadow: 0 0 30px rgba(255, 175, 0, 0.3);
+}
+
+.tesseract-playground__subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(245, 239, 230, 0.6);
+  margin: 8px 0 0;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+  .tesseract-playground__back {
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    font-size: 0.7rem;
+  }
+
+  .tesseract-playground__title-overlay {
+    top: 10px;
+    width: 60%;
+  }
+
+  .tesseract-playground__title {
+    font-size: 1.2rem;
+  }
+
+  .tesseract-playground__subtitle {
+    font-size: 0.65rem;
+  }
+}
+
+/* ===== Loading State ===== */
+.tesseract-playground__loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 200;
+}
+
+.tesseract-playground__loading-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: var(--color-golden, #ffaf00);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}

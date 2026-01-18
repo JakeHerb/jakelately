@@ -1,0 +1,1005 @@
+/**
+ * Whimsical Theme - Playful Joy
+ * Surprise interactions, bouncy animations, delightful details. Pure fun.
+ */
+
+/* ===== Variables ===== */
+:root {
+  --whim-pink: #ff6b9d;
+  --whim-purple: #c084fc;
+  --whim-blue: #60a5fa;
+  --whim-mint: #6ee7b7;
+  --whim-yellow: #fcd34d;
+  --whim-orange: #fb923c;
+  --whim-cream: #fef3e2;
+}
+
+/* ===== Demo Layout ===== */
+.whim-demo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.whim-demo--column {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ===== Button ===== */
+.whim-button {
+  position: relative;
+  font-family: 'Comic Sans MS', 'Chalkboard', cursive, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border: 3px solid var(--whim-purple);
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--whim-pink), var(--whim-purple));
+  color: white;
+  cursor: pointer;
+  transform-origin: center;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 6px 0 #9333ea, 0 8px 20px rgba(192, 132, 252, 0.3);
+}
+
+.whim-button:hover {
+  transform: translateY(-4px) rotate(-2deg);
+  box-shadow: 0 10px 0 #9333ea, 0 12px 30px rgba(192, 132, 252, 0.4);
+}
+
+.whim-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #9333ea;
+}
+
+.whim-button__sparkle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 1.25rem;
+  animation: whim-sparkle 1s ease-in-out infinite;
+}
+
+.whim-button--secondary {
+  background: white;
+  color: var(--whim-purple);
+  box-shadow: 0 6px 0 #ddd, 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.whim-button--secondary:hover {
+  box-shadow: 0 10px 0 #ddd, 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.whim-button--ghost {
+  background: transparent;
+  border: 3px dashed var(--whim-purple);
+  color: var(--whim-purple);
+  box-shadow: none;
+}
+
+.whim-button--ghost:hover {
+  background: rgba(192, 132, 252, 0.1);
+  box-shadow: none;
+  transform: translateY(-2px) rotate(2deg);
+}
+
+.whim-button--destructive {
+  background: linear-gradient(135deg, var(--whim-orange), #ef4444);
+  border-color: #dc2626;
+  box-shadow: 0 6px 0 #b91c1c, 0 8px 20px rgba(239, 68, 68, 0.3);
+}
+
+/* ===== Input ===== */
+.whim-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.whim-input__icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  z-index: 1;
+}
+
+.whim-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 16px 20px 16px 48px;
+  border: 3px solid var(--whim-blue);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.whim-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.whim-input:focus {
+  outline: none;
+  border-color: var(--whim-pink);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.whim-input__wiggle {
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.whim-input-wrapper--focused .whim-input__wiggle {
+  animation: whim-wiggle 0.5s ease;
+}
+
+/* ===== TextArea ===== */
+.whim-textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.whim-textarea__icon {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  font-size: 1.25rem;
+}
+
+.whim-textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 16px 20px 16px 48px;
+  border: 3px solid var(--whim-mint);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  box-sizing: border-box;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.whim-textarea:focus {
+  outline: none;
+  border-color: var(--whim-pink);
+}
+
+.whim-textarea__corner {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+/* ===== Checkbox ===== */
+.whim-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.whim-checkbox input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.whim-checkbox__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--whim-yellow);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-checkbox input:checked + .whim-checkbox__box {
+  background: var(--whim-yellow);
+  border-color: var(--whim-orange);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.whim-checkbox__check {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-checkbox input:checked + .whim-checkbox__box .whim-checkbox__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.whim-checkbox__confetti {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  font-size: 1.25rem;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.whim-checkbox input:checked + .whim-checkbox__box .whim-checkbox__confetti {
+  animation: whim-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.whim-checkbox__text {
+  color: white;
+}
+
+/* ===== Radio ===== */
+.whim-radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.whim-radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.whim-radio__bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--whim-purple);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-radio input:checked + .whim-radio__bubble {
+  background: linear-gradient(135deg, var(--whim-pink), var(--whim-purple));
+  border-color: var(--whim-pink);
+  transform: scale(1.15);
+  animation: whim-bounce 0.5s ease;
+}
+
+.whim-radio__emoji {
+  font-size: 1.25rem;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.whim-radio input:checked + .whim-radio__bubble .whim-radio__emoji {
+  opacity: 1;
+  animation: whim-spin 0.5s ease;
+}
+
+.whim-radio__text {
+  color: white;
+}
+
+/* ===== Toggle ===== */
+.whim-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.whim-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.whim-toggle__track {
+  position: relative;
+  width: 72px;
+  height: 40px;
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  border: 3px solid var(--whim-purple);
+  border-radius: 50px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.whim-toggle input:checked + .whim-toggle__track {
+  background: linear-gradient(135deg, var(--whim-yellow), var(--whim-orange));
+  border-color: var(--whim-orange);
+}
+
+.whim-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-toggle input:checked + .whim-toggle__track .whim-toggle__thumb {
+  transform: translateX(32px);
+}
+
+.whim-toggle__stars {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 0.875rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.whim-toggle input:checked + .whim-toggle__track .whim-toggle__stars {
+  opacity: 0;
+}
+
+.whim-toggle__label {
+  color: white;
+  font-weight: 600;
+}
+
+/* ===== Select ===== */
+.whim-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.whim-select__icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  z-index: 1;
+}
+
+.whim-select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 16px 48px 16px 48px;
+  border: 3px solid var(--whim-mint);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.3s ease;
+}
+
+.whim-select:focus {
+  outline: none;
+  border-color: var(--whim-pink);
+}
+
+.whim-select option {
+  background: #1a1a1a;
+  color: white;
+}
+
+.whim-select__arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--whim-mint);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.whim-select:focus + .whim-select__arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* ===== Card ===== */
+.whim-card {
+  position: relative;
+  width: 100%;
+  padding: 28px;
+  border: 4px solid var(--whim-purple);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.1), rgba(255, 107, 157, 0.1));
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-card:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 20px 40px rgba(192, 132, 252, 0.2);
+}
+
+.whim-card__sticker {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-size: 2.5rem;
+  transform: rotate(15deg);
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.2));
+}
+
+.whim-card__title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--whim-yellow);
+}
+
+.whim-card__content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.whim-card__footer {
+  display: flex;
+  gap: 8px;
+}
+
+.whim-card__tag {
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: white;
+}
+
+/* ===== Badge ===== */
+.whim-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 3px solid var(--whim-blue);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-badge:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.whim-badge--success {
+  border-color: var(--whim-mint);
+  background: rgba(110, 231, 183, 0.2);
+  color: var(--whim-mint);
+}
+
+.whim-badge--warning {
+  border-color: var(--whim-orange);
+  background: rgba(251, 146, 60, 0.2);
+  color: var(--whim-orange);
+}
+
+.whim-badge--special {
+  border-color: var(--whim-yellow);
+  background: linear-gradient(135deg, var(--whim-yellow), var(--whim-orange));
+  color: #1a1a1a;
+  animation: whim-shimmer 2s ease-in-out infinite;
+}
+
+/* ===== Avatar ===== */
+.whim-avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+}
+
+.whim-avatar--large {
+  width: 80px;
+  height: 80px;
+}
+
+.whim-avatar__face {
+  font-size: 2rem;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-avatar:hover .whim-avatar__face {
+  transform: scale(1.2);
+}
+
+.whim-avatar--large .whim-avatar__face {
+  font-size: 3rem;
+}
+
+.whim-avatar__ring {
+  position: absolute;
+  inset: 0;
+  border: 4px solid var(--whim-purple);
+  border-radius: 50%;
+  animation: whim-ring-rotate 3s linear infinite;
+  border-top-color: var(--whim-pink);
+  border-right-color: var(--whim-yellow);
+}
+
+.whim-avatar__sparkle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 1.25rem;
+  animation: whim-sparkle 1s ease-in-out infinite;
+}
+
+/* ===== Tooltip ===== */
+.whim-tooltip-trigger {
+  position: relative;
+  color: var(--whim-purple);
+  cursor: help;
+  font-weight: 500;
+}
+
+.whim-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px) scale(0) rotate(-10deg);
+  padding: 16px 20px;
+  background: linear-gradient(135deg, var(--whim-pink), var(--whim-purple));
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 16px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 20px rgba(192, 132, 252, 0.4);
+}
+
+.whim-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--whim-purple);
+}
+
+.whim-tooltip-trigger:hover .whim-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-12px) scale(1) rotate(0deg);
+}
+
+/* ===== Modal ===== */
+.whim-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.whim-modal {
+  position: relative;
+  background: linear-gradient(180deg, #2d1f4e, #1a1333);
+  border: 4px solid var(--whim-purple);
+  border-radius: 32px;
+  padding: 40px;
+  min-width: 340px;
+  max-width: 90%;
+  text-align: center;
+  animation: whim-modal-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-modal__confetti {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  animation: whim-float 2s ease-in-out infinite;
+}
+
+.whim-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  font-size: 1.25rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whim-modal__close:hover {
+  background: var(--whim-pink);
+  transform: rotate(90deg);
+}
+
+.whim-modal__emoji {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  animation: whim-bounce 1s ease infinite;
+}
+
+.whim-modal__title {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  color: var(--whim-yellow);
+}
+
+.whim-modal__content {
+  font-size: 1rem;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.whim-modal__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ===== Tabs ===== */
+.whim-tabs {
+  width: 100%;
+}
+
+.whim-tabs__list {
+  display: flex;
+  gap: 8px;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.whim-tabs__tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid transparent;
+  border-radius: 16px 16px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-tabs__tab:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.whim-tabs__tab--active {
+  color: white;
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(192, 132, 252, 0.2));
+  border-color: var(--whim-purple);
+  transform: translateY(-4px);
+}
+
+.whim-tabs__emoji {
+  font-size: 1.25rem;
+}
+
+.whim-tabs__content {
+  padding: 24px 8px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Accordion ===== */
+.whim-accordion {
+  width: 100%;
+  border: 4px solid var(--whim-mint);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.whim-accordion:hover {
+  border-color: var(--whim-pink);
+}
+
+.whim-accordion__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 20px 24px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.whim-accordion__emoji {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.whim-accordion--open .whim-accordion__emoji {
+  transform: scale(1.2);
+}
+
+.whim-accordion__title {
+  flex: 1;
+}
+
+.whim-accordion__icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.whim-accordion__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-accordion--open .whim-accordion__body {
+  max-height: 200px;
+}
+
+.whim-accordion__content {
+  padding: 0 24px 24px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ===== Progress ===== */
+.whim-progress {
+  width: 100%;
+}
+
+.whim-progress__track {
+  position: relative;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid var(--whim-blue);
+  border-radius: 50px;
+  overflow: visible;
+}
+
+.whim-progress__bar {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(90deg, var(--whim-mint), var(--whim-blue));
+  border-radius: 50px;
+  transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.whim-progress__runner {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: whim-run 0.3s ease infinite alternate;
+}
+
+.whim-progress__finish {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+}
+
+.whim-progress__label {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Slider ===== */
+.whim-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+.whim-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.whim-slider__track {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid var(--whim-purple);
+  border-radius: 50px;
+}
+
+.whim-slider__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--whim-pink), var(--whim-purple));
+  border-radius: 50px;
+}
+
+.whim-slider__thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  transition: all 0.2s ease;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.3));
+}
+
+.whim-slider:hover + .whim-slider__track .whim-slider__thumb {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.whim-slider__value {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--whim-yellow);
+  margin-top: 16px;
+}
+
+/* ===== Toast ===== */
+.whim-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, var(--whim-yellow), var(--whim-orange));
+  border: 4px solid #1a1a1a;
+  border-radius: 20px;
+  color: #1a1a1a;
+  z-index: 1000;
+  animation: whim-toast-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 8px 0 #1a1a1a;
+}
+
+.whim-toast__emoji {
+  font-size: 1.5rem;
+  animation: whim-pop-up 0.5s ease;
+}
+
+.whim-toast__message {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.whim-toast__close {
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whim-toast__close:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: rotate(90deg);
+}
+
+/* ===== Animations ===== */
+@keyframes whim-sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.5; transform: scale(1.2) rotate(180deg); }
+}
+
+@keyframes whim-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+@keyframes whim-pop {
+  0% { opacity: 0; transform: scale(0) rotate(-45deg); }
+  50% { opacity: 1; transform: scale(1.3) rotate(10deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes whim-bounce {
+  0%, 100% { transform: translateY(0) scale(1.15); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+
+@keyframes whim-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes whim-ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes whim-shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+@keyframes whim-float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@keyframes whim-modal-in {
+  0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes whim-run {
+  0% { transform: translateY(-50%) scaleX(1); }
+  100% { transform: translateY(-50%) scaleX(-1); }
+}
+
+@keyframes whim-toast-in {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes whim-pop-up {
+  0% { transform: scale(0) rotate(-180deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}

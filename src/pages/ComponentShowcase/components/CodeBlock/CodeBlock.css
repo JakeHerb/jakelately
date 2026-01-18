@@ -1,0 +1,56 @@
+/* ===== Code Block ===== */
+
+.code-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 175, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-block__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 175, 0, 0.1);
+}
+
+.code-block__language {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-teal, #3c7f72);
+}
+
+.code-block__copy {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(245, 239, 230, 0.6);
+  background: transparent;
+  border: 1px solid rgba(255, 175, 0, 0.2);
+  border-radius: 4px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-block__copy:hover {
+  border-color: var(--color-golden, #ffaf00);
+  color: var(--color-golden, #ffaf00);
+}
+
+.code-block__pre {
+  margin: 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+}
+
+.code-block__code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--color-cream, #f5efe6);
+  white-space: pre;
+}

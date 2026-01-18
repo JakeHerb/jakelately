@@ -1,33 +1,59 @@
 import React from 'react';
 import './Hero.css';
-import leftSpaceImage from './LeftSpace.png';
-import rightSpaceImage from './rightSpace.png';
-import heroLines from './heroLines.svg';
 import astronautImage from './spaceman.png';
 
 function Hero() {
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
+  };
 
-    const heroStyle = {
-        height: '70dvh',
-    }
-    const lineStyle = {
-        backgroundColor: '#f4ddb5', // Set the color of the line
-      };
   return (
-    <div className="hero" style={heroStyle}>
-      <img src={leftSpaceImage} alt="Left Space" className="background-image left" />
-      <img src={rightSpaceImage} alt="Right Space" className="background-image right" />
-      <img src={heroLines} alt="Hero Lines" className="hero-lines" />
-      <img src={astronautImage} alt="Floating Astronaut" className="floating-astronaut"/>
-      <h1 className="hero-title">
-        <span className="jake">JAKE</span> 
-        <span className="lately turqiose">LATELY</span>      
-      </h1>
-      <div className="horizontal-line" style={lineStyle}></div> {/* Horizontal line */}
-        <div>
-            <p className="hero-subtitle">How can <span className="yellow">Jake</span> help <span className="you">you</span>?&nbsp;</p>
+    <div className="hero">
+      {/* Animated star field background */}
+      <div className="star-field"></div>
+
+      {/* Ambient glow effects */}
+      <div className="hero-glow hero-glow--primary"></div>
+      <div className="hero-glow hero-glow--secondary"></div>
+
+      {/* Floating astronaut */}
+      <img src={astronautImage} alt="" className="floating-astronaut" />
+
+      {/* Main content */}
+      <div className="hero-content">
+        <h1 className="hero-title">
+          <span className="hero-name">
+            <span className="hero-name--jake">Jake</span>
+            <span className="hero-name--lately">Lately</span>
+          </span>
+        </h1>
+
+        <div className="hero-tagline-wrapper">
+          <p className="hero-tagline">
+            Senior AI Engineer building tools that reach billions.
+          </p>
         </div>
-      {/* Add more content or a call-to-action button if needed */}
+
+        <div className="hero-links">
+          <a href="/projects" className="hero-link">
+            <span className="hero-link-icon">{'>'}</span>
+            View Work
+          </a>
+          <a href="/contact" className="hero-link hero-link--alt">
+            <span className="hero-link-icon">{'~'}</span>
+            Get in Touch
+          </a>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <button className="scroll-indicator" onClick={scrollToContent} aria-label="Scroll down">
+        <span className="scroll-indicator-text">scroll</span>
+        <span className="scroll-indicator-arrow"></span>
+      </button>
     </div>
   );
 }

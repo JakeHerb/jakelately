@@ -1,0 +1,187 @@
+/* ===== Signal Section ===== */
+
+.signal-section {
+  position: relative;
+  background: var(--gradient-space);
+  padding: var(--space-8) var(--space-4);
+  overflow: hidden;
+}
+
+.signal-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.signal-header {
+  margin-bottom: var(--space-4);
+}
+
+.signal-prompt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--color-teal);
+  opacity: 0.8;
+}
+
+/* ===== Terminal Window ===== */
+.signal-terminal {
+  background: rgba(1, 19, 41, 0.8);
+  border: 1px solid rgba(255, 175, 0, 0.2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ===== Terminal Header ===== */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 175, 0, 0.1);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-dot--red {
+  background: #ff5f57;
+}
+
+.terminal-dot--yellow {
+  background: #febc2e;
+}
+
+.terminal-dot--green {
+  background: #28c840;
+}
+
+.terminal-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--color-cream);
+  opacity: 0.5;
+}
+
+/* ===== Terminal Body ===== */
+.terminal-body {
+  padding: var(--space-4);
+}
+
+.signal-line {
+  display: flex;
+  gap: var(--space-2);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  line-height: 1.8;
+  opacity: 0;
+  animation: fade-in-line 0.4s ease-out forwards;
+}
+
+@keyframes fade-in-line {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.signal-prefix {
+  color: var(--color-teal);
+  min-width: 80px;
+}
+
+.signal-value {
+  color: var(--color-cream);
+  opacity: 0.9;
+}
+
+.signal-value--highlight {
+  color: var(--color-golden);
+  opacity: 1;
+}
+
+/* ===== Cursor ===== */
+.signal-cursor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+}
+
+.cursor-prompt {
+  color: var(--color-teal);
+}
+
+.cursor-blink {
+  width: 8px;
+  height: 18px;
+  background: var(--color-golden);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ===== Reveal Animation ===== */
+.signal-terminal.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s var(--ease-out-expo);
+}
+
+.signal-terminal.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .signal-section {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .signal-line {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .signal-prefix {
+    min-width: auto;
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+
+  .signal-value {
+    padding-left: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-body {
+    padding: var(--space-3);
+  }
+
+  .signal-line {
+    font-size: 0.8rem;
+  }
+}

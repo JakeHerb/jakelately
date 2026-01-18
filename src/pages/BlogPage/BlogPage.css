@@ -1,0 +1,331 @@
+/* ===== Blog Page - Space Theme ===== */
+
+.blog-page {
+  min-height: 100vh;
+  background: var(--gradient-space);
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+/* ===== Content Container ===== */
+.blog-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+/* ===== Header ===== */
+.blog-header {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.blog-tagline {
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  color: var(--color-teal);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.blog-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 700;
+  color: var(--color-golden);
+  margin: 0;
+  text-shadow: var(--glow-text-golden);
+}
+
+.blog-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-cream);
+  opacity: 0.8;
+  margin: var(--space-4) 0 0;
+  line-height: 1.6;
+}
+
+.blog-link {
+  color: var(--color-teal);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.blog-link:hover {
+  color: var(--color-golden);
+  border-bottom-color: var(--color-golden);
+}
+
+/* ===== Filters ===== */
+.blog-filters {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.filter-btn {
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  border: 1px solid rgba(255, 175, 0, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--color-cream);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: rgba(255, 175, 0, 0.5);
+  background: rgba(255, 175, 0, 0.05);
+}
+
+.filter-btn.active {
+  background: var(--color-golden);
+  border-color: var(--color-golden);
+  color: var(--color-navy);
+}
+
+/* ===== Posts List ===== */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ===== Post Card ===== */
+.post-card {
+  padding: var(--space-5);
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 175, 0, 0.3);
+  box-shadow: var(--glow-golden);
+}
+
+.post-card.update {
+  padding: var(--space-4);
+  border-left: 3px solid var(--color-teal);
+}
+
+.post-link {
+  text-decoration: none;
+  display: block;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.post-date {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--color-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.post-read-time {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-cream);
+  opacity: 0.5;
+}
+
+.post-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-golden);
+  margin: 0 0 var(--space-3);
+  transition: color 0.3s ease;
+}
+
+.post-card:hover .post-title {
+  text-shadow: var(--glow-text-golden);
+}
+
+.post-excerpt {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-cream);
+  opacity: 0.85;
+  margin: 0 0 var(--space-4);
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.post-tag {
+  padding: 4px 12px;
+  background: rgba(60, 127, 114, 0.15);
+  border: 1px solid rgba(60, 127, 114, 0.3);
+  border-radius: 20px;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  color: var(--color-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-read-more {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  color: var(--color-golden);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.post-read-more .arrow {
+  transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-read-more .arrow {
+  transform: translateX(4px);
+}
+
+/* ===== Update Card ===== */
+.update-content {
+  position: relative;
+}
+
+.update-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.update-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-teal);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.update-label {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  color: var(--color-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.update-date {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-cream);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.update-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-cream);
+  margin: 0 0 var(--space-2);
+}
+
+.update-text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-cream);
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* ===== Footer ===== */
+.blog-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.blog-footer .footer-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-golden), transparent);
+}
+
+.blog-footer .footer-note {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-cream);
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .blog-page {
+    padding-top: 70px;
+  }
+
+  .blog-content {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .post-card {
+    padding: var(--space-4);
+  }
+
+  .post-card:hover {
+    transform: none;
+  }
+
+  .blog-filters {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-content {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .blog-title {
+    font-size: 2.5rem;
+  }
+
+  .post-card {
+    padding: var(--space-3);
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+  }
+
+  .filter-btn {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.75rem;
+  }
+}

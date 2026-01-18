@@ -1,0 +1,320 @@
+/* ===== JakeLately Effects Library ===== */
+/* Reusable animation classes for consistent "wow" styling */
+
+/* ===== Star Field Background ===== */
+.star-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(255, 175, 0, 0.8), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(60, 127, 114, 0.6), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(244, 221, 181, 0.7), transparent),
+    radial-gradient(2px 2px at 130px 80px, rgba(255, 175, 0, 0.5), transparent),
+    radial-gradient(1px 1px at 160px 120px, rgba(60, 127, 114, 0.6), transparent),
+    radial-gradient(2px 2px at 200px 50px, rgba(244, 221, 181, 0.4), transparent),
+    radial-gradient(1px 1px at 250px 150px, rgba(255, 175, 0, 0.6), transparent),
+    radial-gradient(2px 2px at 300px 90px, rgba(60, 127, 114, 0.5), transparent),
+    radial-gradient(1px 1px at 350px 200px, rgba(244, 221, 181, 0.5), transparent),
+    radial-gradient(2px 2px at 50px 250px, rgba(255, 175, 0, 0.4), transparent),
+    radial-gradient(1px 1px at 150px 300px, rgba(60, 127, 114, 0.6), transparent),
+    radial-gradient(2px 2px at 280px 350px, rgba(244, 221, 181, 0.5), transparent);
+  background-size: 400px 400px;
+  animation: twinkle 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ===== Glow Orb ===== */
+.glow-orb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: var(--gradient-golden-glow);
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulse-glow 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+.glow-orb--top-right {
+  top: 20%;
+  right: -20%;
+}
+
+.glow-orb--bottom-left {
+  bottom: 20%;
+  left: -20%;
+}
+
+.glow-orb--small {
+  width: 150px;
+  height: 150px;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* ===== Float Animation ===== */
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float--slow {
+  animation-duration: 6s;
+}
+
+.float--fast {
+  animation-duration: 2.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ===== Shimmer Hover Effect ===== */
+.shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 175, 0, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.shimmer-hover:hover::before {
+  left: 100%;
+}
+
+/* ===== Slide In Animation ===== */
+.slide-in {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slide-in-right 0.5s var(--ease-out-expo) forwards;
+}
+
+.slide-in--from-bottom {
+  transform: translateY(30px);
+  animation-name: slide-in-up;
+}
+
+.slide-in--from-right {
+  transform: translateX(30px);
+  animation-name: slide-in-left;
+}
+
+@keyframes slide-in-right {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== Fade In Animation ===== */
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.6s var(--ease-in-out-smooth) forwards;
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+/* ===== Scale In Animation ===== */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: scale-in 0.5s var(--ease-out-back) forwards;
+}
+
+@keyframes scale-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== Stagger Delay Classes ===== */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* ===== Glass Card ===== */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+.glass-card--hover:hover {
+  background: var(--gradient-card-hover);
+  border-color: rgba(255, 175, 0, 0.4);
+  box-shadow: var(--glow-golden);
+}
+
+/* ===== Golden Underline Animation ===== */
+.golden-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.golden-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-golden), var(--color-teal));
+  transition: width 0.4s var(--ease-out-expo);
+}
+
+.golden-underline:hover::after,
+.golden-underline.active::after {
+  width: 100%;
+}
+
+/* ===== Scroll Reveal States ===== */
+/* Used by useScrollAnimation hook */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease-in-out-smooth), transform 0.6s var(--ease-out-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--left {
+  transform: translateX(-30px);
+}
+
+.reveal--left.visible {
+  transform: translateX(0);
+}
+
+.reveal--right {
+  transform: translateX(30px);
+}
+
+.reveal--right.visible {
+  transform: translateX(0);
+}
+
+.reveal--scale {
+  transform: scale(0.95);
+}
+
+.reveal--scale.visible {
+  transform: scale(1);
+}
+
+/* ===== Glow Button ===== */
+.glow-button {
+  background: var(--color-golden);
+  color: var(--color-navy);
+  border: none;
+  padding: 12px 32px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-button:hover {
+  background: var(--color-golden-light);
+  box-shadow: var(--glow-golden-strong);
+  transform: translateY(-2px);
+}
+
+.glow-button:active {
+  transform: translateY(0);
+}
+
+/* ===== Icon Hover Glow ===== */
+.icon-glow {
+  transition: all 0.3s ease;
+}
+
+.icon-glow:hover {
+  filter: drop-shadow(var(--glow-golden));
+  transform: scale(1.1);
+}
+
+/* ===== Animated Border ===== */
+.animated-border {
+  position: relative;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--color-golden), var(--color-teal), var(--color-golden));
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient-shift 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.animated-border:hover::before {
+  opacity: 1;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
