@@ -33,9 +33,9 @@ export const projects = [
   },
   {
     id: 'f1-trackside',
-    title: 'F1 x Mercedes x Meta AI: Trackside',
+    title: 'F1 Trackside AI Experience',
     tagline: 'Real-time AI at the Las Vegas Grand Prix',
-    description: 'Solo engineer on an AI activation bringing real-time Meta AI experiences to Formula 1 fans trackside at the Las Vegas Grand Prix. Partnership with Mercedes AMG Petronas.',
+    description: 'Solo engineer on an AI activation bringing real-time Meta AI experiences to Formula 1 fans trackside at the Las Vegas Grand Prix.',
     thumbnail: null,
     category: 'ai',
     tags: ['AI/ML', 'Activation', 'Live Event'],
@@ -45,7 +45,6 @@ export const projects = [
     year: '2024',
     role: 'Solo Engineer',
     event: 'Las Vegas Grand Prix 2024',
-    partners: ['Formula 1', 'Mercedes AMG Petronas', 'Meta AI'],
   },
   {
     id: 'ufc-barbershop',
@@ -61,7 +60,6 @@ export const projects = [
     year: '2024',
     role: 'Engineer',
     event: 'UFC Championships 2024',
-    partners: ['UFC', 'Meta AI'],
   },
 ];
 

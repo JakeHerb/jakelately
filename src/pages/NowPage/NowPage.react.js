@@ -13,12 +13,12 @@ function NowPage() {
     {
       icon: '>>',
       title: 'At Work',
-      content: `Founding engineer for MSL Pathfinding at Meta. Architected the pipeline connecting internal AI models to external experiences - enabling 6,500+ Meta AI demos at 20+ major events. Leading architecture on ImagineFlow, our internal GenAI creative platform.`
+      content: `Founding engineer for MSL Pathfinding at Meta - the team that runs ahead of the company to explore what's possible with next-gen AI. We prototype, validate, and influence the direction of AI across Meta.`
     },
     {
       icon: '[]',
       title: 'Building',
-      content: `This very website you're looking at. Also working on ImagineFlow extensions, new model integrations, and the Llama Dev API powering internal media model requests. Prototyping features that might ship to billions of users.`
+      content: `This very website you're looking at. Internal tools and platforms that help teams across Meta build with generative AI. Prototyping features that might ship to billions of users.`
     },
     {
       icon: '{}',
@@ -28,12 +28,12 @@ function NowPage() {
     {
       icon: '##',
       title: 'Running',
-      content: `GenAI Office Hours supporting 400+ projects. ImagineFlow Active Contributors group helping engineers ramp up on the platform. Multiple internal groups bridging technical and creative teams across the company.`
+      content: `Internal knowledge sharing and support programs for engineers building with AI. Bridging technical and creative teams across the company. Helping people ramp up on new platforms and capabilities.`
     },
     {
       icon: '<>',
       title: 'Shipping',
-      content: `AI experiences for UFC, F1, LlamaCon, and luxury fashion campaigns. AI Mural experiences and MemeGen prototypes making their way toward product. The infrastructure behind thousands of AI-generated images and videos at live events.`
+      content: `AI experiences for UFC, F1, and high-profile brand campaigns. Live event activations that put AI in people's hands in the real world. The infrastructure behind thousands of AI-generated images and videos at live events.`
     },
     {
       icon: '::',

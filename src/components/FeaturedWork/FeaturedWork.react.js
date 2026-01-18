@@ -14,11 +14,11 @@ function FeaturedWork() {
 
   const featuredProjects = [
     {
-      id: 'Backdrop',
-      title: 'Instagram: Backdrop',
-      description: 'First generative AI image editing feature',
+      id: 'instagram-ai',
+      title: 'Instagram AI Features',
+      description: 'Generative AI image editing for Instagram',
       thumbnail: backdropThumbnail,
-      link: '/projects/Backdrop',
+      link: '/projects/instagram-ai',
       tags: ['AI/ML', 'Product'],
     },
     {

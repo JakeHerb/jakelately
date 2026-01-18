@@ -40,12 +40,10 @@ function GoodAtStuff() {
             </h2>
             <p className="card-text">
               Senior Generative AI Research Engineer and founding engineer for{' '}
-              <span className="highlight-gold">MSL Pathfinding</span>. Architected
-              the pipeline connecting internal AI models to external experiences,
-              enabling <span className="highlight-teal">6,500+ AI demos</span> at
-              20+ major events. Built{' '}
-              <span className="highlight-gold">ImagineFlow</span>, Meta's internal
-              GenAI creative platform serving hundreds of users across the company.
+              <span className="highlight-gold">MSL Pathfinding</span> - the team that
+              runs ahead of the company to explore what's possible with next-gen AI.
+              Building internal platforms and tools that help teams across Meta
+              create with <span className="highlight-teal">generative AI</span>.
             </p>
           </article>
 
@@ -56,12 +54,11 @@ function GoodAtStuff() {
               Impact at Scale
             </h2>
             <p className="card-text">
-              Technical enabler for flagship AI activations across UFC, F1, LlamaCon,
-              and luxury fashion campaigns. Runs{' '}
-              <span className="highlight-teal">GenAI Office Hours</span> supporting
-              400+ projects and mentors engineers across orgs. Bridges the gap between
-              research and production, turning experimental prototypes into experiences
-              that reach millions.
+              Technical enabler for flagship AI activations across UFC, F1,
+              and high-profile brand campaigns. Bridges the gap between
+              research and production, turning experimental prototypes into{' '}
+              <span className="highlight-teal">experiences that reach millions</span>.
+              Runs internal knowledge sharing programs to help engineers build with AI.
             </p>
           </article>
         </div>
